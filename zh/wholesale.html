@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>批发 — TIMEHOME 清仓</title>
+<meta name="description" content="Wholesale, bulk orders and tiered pricing.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div style="background:#1a1a18;color:#aaa;font-size:12px;padding:6px 0;">
+  <div class="container" style="display:flex;justify-content:flex-end;gap:8px;">
+    <span>🌐</span>
+    <a href="../en/index.html" >English</a>
+    <span>|</span>
+    <a href="index.html" style="color:#f0d9b5;font-weight:700;">中文</a>
+  </div>
+</div>
+<header class="header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">TIME<span>HOME</span> 清仓</a>
+    <nav><a href="../index.html" class="">选购</a><a href="../wholesale.html" class="active">批发</a><a href="../about.html" class="">关于</a><a href="../index.html#contact">联系</a></nav>
+  </div>
+</header>
+<section class="hero"><div class="container"><h1>批发与大货订购</h1></div></section>
+<section class="container section">
+  <p>欢迎零售商、经销商与设计师合作。支持单件与整柜量级，同批库存混装拼柜，起订量灵活。</p>
+  <p><b>阶梯价格：</b>混批数量越多，单价越低。具体档位按整单总数量计算，请告知意向 SKU 与数量，我们为您报价。</p>
+  <div class="info-box"><p><b>如何询盘：</b>请发送您的 SKU 清单与目标数量，我们通常在 24 小时内回复（周一至周六）。</p>
+    <p style="margin-top:8px;"><a class="btn" href="mailto:sales@timehome.top?subject=批发询盘">sales@timehome.top</a></p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><b>TIMEHOME CLEARANCE</b> — Guangzhou Panyu District Shiguang Home Furnishing (sole proprietorship) / 广州市番禺区时光家居商行（个体工商户）</div>
+    <div><a href="../wholesale.html">批发</a><a href="../about.html">关于</a><a href="mailto:sales@timehome.top">Email</a></div>
+  </div>
+</footer>
+<script src="../js/products.js"></script>
+<script>
+  var _sel = location.pathname.split('/').pop().toLowerCase();
+  if(_sel.indexOf('product')===0 && window.renderProduct) renderProduct('#product-root');
+  else if(_sel.indexOf('category')===0 && window.renderCategory) renderCategory('#cat-grid');
+  else if(_sel.indexOf('index')===0 && window.renderFeatured) renderFeatured('#featured-grid');
+</script>
+</body>
+</html>
