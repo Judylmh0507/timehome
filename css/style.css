@@ -1,72 +1,53 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #2a2a28; line-height: 1.7; background: #faf8f4; }
-a { color: #8a5a2b; text-decoration: none; }
-a:hover { text-decoration: underline; }
-.container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-.topbar { background: #2a2a28; color: #faf8f4; font-size: 13px; padding: 8px 0; }
-.topbar-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.topbar a { color: #f0d9b5; }
-.topbar-right a { margin-left: 16px; }
-.header { background: #fff; border-bottom: 1px solid #e5ddce; padding: 18px 0; position: sticky; top: 0; z-index: 50; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 22px; font-weight: 800; letter-spacing: .5px; color: #2a2a28; }
-.logo span { color: #b8793a; }
-nav a { margin-left: 24px; font-size: 15px; font-weight: 600; color: #444; }
-nav a.active { color: #b8793a; }
-.section { padding: 48px 20px; max-width: 880px; margin: 0 auto; }
-.section-title { font-size: 32px; margin-bottom: 24px; color: #2a2a28; }
-h2 { font-size: 21px; margin: 32px 0 12px; color: #8a5a2b; }
-p { margin: 10px 0; }
-b, strong { color: #2a2a28; }
-.specs { list-style: none; padding: 0; margin: 12px 0; }
-.specs li { padding: 8px 0 8px 20px; border-bottom: 1px solid #ece5d8; position: relative; }
-.specs li:before { content: "\2022"; color: #b8793a; position: absolute; left: 0; font-weight: 800; }
-.info-box { background: #f3ebdc; border-left: 4px solid #b8793a; padding: 16px 20px; margin: 16px 0; border-radius: 0 6px 6px 0; }
-.hero { background: #fff; padding: 64px 20px; text-align: center; border-bottom: 1px solid #e5ddce; }
-.hero h1 { font-size: 40px; margin-bottom: 12px; }
-.hero .sub { font-size: 18px; color: #666; max-width: 640px; margin: 0 auto 24px; }
-.btn { display: inline-block; background: #b8793a; color: #fff; padding: 12px 28px; border-radius: 6px; font-weight: 700; margin: 6px; }
-.btn:hover { background: #9c6430; text-decoration: none; color: #fff; }
-.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 32px 20px; max-width: 1000px; margin: 0 auto; }
-.trust .item { background: #fff; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #ece5d8; }
-.trust .item .ic { font-size: 30px; }
-.trust .item b { display: block; margin-top: 8px; font-size: 14px; }
-.condition-note { background: #fff7e8; border: 1px solid #e8c98a; padding: 16px 20px; border-radius: 6px; margin: 20px 0; }
-.contact-details li { padding-left: 0; }
-.contact-details li:before { display: none; }
-.footer { background: #2a2a28; color: #ddd; padding: 24px 0; margin-top: 48px; font-size: 14px; }
-.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.footer a { color: #f0d9b5; margin-left: 14px; }
-.terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
-.terms-grid .t { background: #fff; border: 1px solid #ece5d8; border-radius: 8px; padding: 18px; }
-.terms-grid .t b { display: block; color: #8a5a2b; margin-bottom: 6px; }
-form { max-width: 520px; margin: 20px 0; }
-form label { display: block; margin: 12px 0 4px; font-weight: 600; font-size: 14px; }
-form input, form textarea, form select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
-form textarea { min-height: 120px; }
-.products { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; padding: 20px 0; }
-.card { background: #fff; border: 1px solid #ece5d8; border-radius: 8px; overflow: hidden; }
-.card img { width: 100%; height: 180px; object-fit: cover; display: block; }
-.card .body { padding: 14px; }
-.card .price { color: #b8793a; font-weight: 800; font-size: 18px; }
-.card .orig { text-decoration: line-through; color: #999; font-size: 13px; margin-left: 8px; }
-.cat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 20px 0; }
-.cat-cards .c {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 40px 24px; border-radius: 12px; text-align: center;
-  color: #fff; font-weight: 700; text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-  min-height: 170px;
+/* TIMEHOME Clearance — 原始版面样式，未改动 */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:#faf8f5; color:#2a2a28; line-height:1.6; }
+
+.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+.header { background:#2a2a28; color:#fff; padding:16px 0; }
+.header .container { display:flex; justify-content:space-between; align-items:center; }
+.logo a { color:#fff; text-decoration:none; font-size:20px; font-weight:700; }
+.nav a { color:#ccc; text-decoration:none; margin-left:20px; font-size:14px; }
+.nav a:hover { color:#fff; }
+
+.hero { background:linear-gradient(135deg,#3a3a38,#2a2a28); color:#fff; padding:60px 0; text-align:center; }
+.hero h1 { font-size:36px; margin-bottom:16px; }
+.hero p { font-size:16px; opacity:0.85; max-width:600px; margin:0 auto 24px; }
+
+.btn { display:inline-block; background:#c9a96e; color:#fff; padding:12px 28px; border-radius:6px; text-decoration:none; font-weight:600; }
+.btn:hover { background:#b8965a; }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:24px; }
+.card { background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.08); transition:transform 0.2s; }
+.card:hover { transform:translateY(-4px); }
+.card img { width:100%; height:200px; object-fit:cover; }
+.card .body { padding:16px; }
+.card .price { color:#c9a96e; font-size:20px; font-weight:700; }
+.card .orig { color:#999; text-decoration:line-through; margin-left:8px; font-size:14px; }
+
+.cat-cards { display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; }
+.cat-card { background:#fff; border-radius:8px; padding:32px 16px; text-align:center; text-decoration:none; color:#2a2a28; box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:transform 0.2s; }
+.cat-card:hover { transform:translateY(-4px); }
+.cat-icon { font-size:40px; margin-bottom:12px; }
+.cat-label { font-weight:600; font-size:16px; }
+
+.product-detail { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+.main-img img { width:100%; border-radius:8px; border:1px solid #ece5d8; }
+.thumbs { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.thumbs img { width:60px; height:60px; object-fit:cover; border-radius:4px; border:1px solid #ddd; cursor:pointer; }
+.thumbs img:hover { border-color:#c9a96e; }
+
+.specs { list-style:none; margin:16px 0; }
+.specs li { padding:6px 0; border-bottom:1px solid #f0f0f0; font-size:14px; }
+.specs li b { display:inline-block; min-width:100px; color:#666; }
+
+.condition-note { background:#fff8e1; border-left:4px solid #ffc107; padding:12px 16px; border-radius:4px; font-size:14px; }
+
+.footer { background:#2a2a28; color:#fff; padding:32px 0; margin-top:60px; text-align:center; }
+
+@media (max-width:768px) {
+  .product-detail { grid-template-columns:1fr; }
+  .cat-cards { grid-template-columns:repeat(2, 1fr); }
+  .header .container { flex-direction:column; gap:12px; }
+  .nav a { margin:0 8px; }
 }
-.cat-cards .c:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,.15); text-decoration: none; color: #fff; }
-.cat-cards .emoji { font-size: 42px; line-height: 1; margin-bottom: 10px; }
-.cat-cards .ctitle { font-size: 20px; letter-spacing: .5px; margin-bottom: 8px; }
-.cat-cards .cdesc { font-size: 13px; font-weight: 400; opacity: .92; line-height: 1.5; }
-/* 每个分类独立暖木色调（无需图片，纯CSS色块） */
-.cat-cards .c-living  { background: linear-gradient(135deg, #b8793a, #8a5a2b); }
-.cat-cards .c-dining  { background: linear-gradient(135deg, #c08a4a, #9c6430); }
-.cat-cards .c-study   { background: linear-gradient(135deg, #6b7a55, #475234); }
-.cat-cards .c-bedroom { background: linear-gradient(135deg, #9a6b6b, #7a4d4d); }
-.badge { background: #c0392b; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; }
-@media (max-width: 600px) { .hero h1 { font-size: 28px; } nav a { margin-left: 14px; } }
