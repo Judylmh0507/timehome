@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products — TIMEHOME</title>
+<title>Category — TIMEHOME Clearance</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,31 +17,30 @@
       <a href="category.html?cat=dining">Dining</a>
       <a href="category.html?cat=study">Study</a>
       <a href="category.html?cat=bedroom">Bedroom</a>
-      <a href="../about.html">About</a>
-      <a href="../wholesale.html">Wholesale</a>
       <a href="../zh/index.html">中文</a>
     </nav>
   </div>
 </header>
 
 <section class="container" style="padding:40px 0;">
-  <h2 style="margin-bottom:24px;" id="cat-title">Products</h2>
-  <div class="grid" id="category-list"></div>
+  <h2 id="cat-title" style="margin-bottom:24px;">Products</h2>
+  <div id="category-list"></div>
 </section>
 
 <footer class="footer">
   <div class="container">
-    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm (Individual Business)</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495 | Foshan Shunde</div>
   </div>
 </footer>
 
 <script src="../js/products.js"></script>
+<script src="../js/render.js"></script>
 <script>
-  // 根据 cat 参数设置标题
-  const catNames = { living:'Living Room', dining:'Dining Room', study:'Study / Office', bedroom:'Bedroom' };
-  const cat = new URLSearchParams(location.search).get('cat') || 'living';
+  var catNames = { living:'Living Room', dining:'Dining Room', study:'Study / Office', bedroom:'Bedroom' };
+  var cat = new URLSearchParams(location.search).get('cat') || 'living';
   document.getElementById('cat-title').textContent = catNames[cat] || 'Products';
+  renderProducts('category-list', cat);
 </script>
 </body>
 </html>

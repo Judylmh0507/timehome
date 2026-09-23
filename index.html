@@ -32,7 +32,7 @@
 
 <section class="container" style="padding:40px 0;">
   <h2 style="margin-bottom:24px;">Featured Deals</h2>
-  <div class="grid" id="featured"></div>
+  <div id="featured"></div>
 </section>
 
 <section class="container" style="padding:40px 0;">
@@ -65,5 +65,9 @@
 </footer>
 
 <script src="js/products.js"></script>
+<script src="js/render.js"></script>
+<script>
+  renderProducts('featured', null, true, 8);
+</script>
 </body>
 </html>

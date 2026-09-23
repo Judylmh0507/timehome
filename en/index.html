@@ -17,8 +17,6 @@
       <a href="category.html?cat=dining">Dining</a>
       <a href="category.html?cat=study">Study</a>
       <a href="category.html?cat=bedroom">Bedroom</a>
-      <a href="../about.html">About</a>
-      <a href="../wholesale.html">Wholesale</a>
       <a href="../zh/index.html">中文</a>
     </nav>
   </div>
@@ -34,7 +32,7 @@
 
 <section class="container" style="padding:40px 0;">
   <h2 style="margin-bottom:24px;">Featured Deals</h2>
-  <div class="grid" id="featured"></div>
+  <div id="featured"></div>
 </section>
 
 <section class="container" style="padding:40px 0;">
@@ -61,11 +59,15 @@
 
 <footer class="footer">
   <div class="container">
-    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm (Individual Business)</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495 | Warehouse: Foshan Shunde</div>
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495 | Foshan Shunde</div>
   </div>
 </footer>
 
 <script src="../js/products.js"></script>
+<script src="../js/render.js"></script>
+<script>
+  renderProducts('featured', null, true, 8);
+</script>
 </body>
 </html>
