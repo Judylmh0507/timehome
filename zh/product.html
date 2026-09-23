@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>产品详情 — TIMEHOME</title>
+<title>产品详情 — TIMEHOME 清仓</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,8 +17,6 @@
       <a href="category.html?cat=dining">餐厅</a>
       <a href="category.html?cat=study">书房</a>
       <a href="category.html?cat=bedroom">卧室</a>
-      <a href="../about.html">关于</a>
-      <a href="../wholesale.html">批发</a>
       <a href="../en/index.html">English</a>
     </nav>
   </div>
@@ -31,10 +29,78 @@
 <footer class="footer">
   <div class="container">
     <div><b>TIMEHOME 清仓</b> — 广州市番禺区时光家居商行（个体工商户）</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495 | 仓库：佛山顺德</div>
   </div>
 </footer>
 
 <script src="../js/products.js"></script>
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get('id');
+  var box = document.getElementById('product-detail');
+  if (!id) { box.innerHTML = '<p>缺少产品 ID。</p>'; return; }
+
+  var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
+  if (!p) { box.innerHTML = '<p>未找到该产品。</p>'; return; }
+
+  document.title = p.name + ' — TIMEHOME 清仓';
+
+  var imgs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
+         + 'class="detail-img" data-idx="' + i + '" '
+         + 'style="width:100%;border-radius:8px;border:1px solid #ece5d8;' + (i===0?'':'display:none;') + '">';
+  }).join('');
+
+  var thumbs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
+         + 'class="thumb" '
+         + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
+  }).join('');
+
+  var saveBadge = '';
+  if (p.originalPrice && p.originalPrice > p.price) {
+    var pct = Math.round((1 - p.price / p.originalPrice) * 100);
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">节省 ' + pct + '%</span>';
+  }
+
+  box.innerHTML = ''
+    + '<div class="product-detail">'
+    +   '<div class="main-img">'
+    +     '<div id="main-img-box">' + imgs + '</div>'
+    +     '<div class="thumbs" id="thumbs">' + thumbs + '</div>'
+    +   '</div>'
+    +   '<div>'
+    +     '<h1 style="margin-top:0;">' + p.name + '</h1>'
+    +     '<p style="color:#888;">SKU: ' + p.id.toUpperCase() + '</p>'
+    +     saveBadge
+    +     '<div style="margin:20px 0;font-size:24px;">'
+    +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
+    +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
+    +     '</div>'
+    +     '<ul class="specs">'
+    +       '<li><b>尺寸：</b>' + p.dimensions + '</li>'
+    +       '<li><b>材质：</b>' + p.material + '</li>'
+    +       '<li><b>漆面：</b>' + p.finish + '</li>'
+    +       '<li><b>净重：</b>' + p.weight + '</li>'
+    +       '<li><b>包装体积：</b>' + p.packagingVolume + '</li>'
+    +       '<li><b>库存：</b>' + p.stock + ' 件</li>'
+    +     '</ul>'
+    +     '<div class="condition-note">' + p.condition + '</div>'
+    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← 返回列表</a>'
+    +   '</div>'
+    + '</div>';
+
+  var mainImgs = box.querySelectorAll('.detail-img');
+  var thumbEls = box.querySelectorAll('.thumb');
+  thumbEls.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var idx = parseInt(t.getAttribute('data-idx'), 10);
+      mainImgs.forEach(function (m, i) { m.style.display = (i === idx ? 'block' : 'none'); });
+      thumbEls.forEach(function (x) { x.style.borderColor = '#ddd'; });
+      t.style.borderColor = '#c9a96e';
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -17,8 +17,6 @@
       <a href="category.html?cat=dining">餐厅</a>
       <a href="category.html?cat=study">书房</a>
       <a href="category.html?cat=bedroom">卧室</a>
-      <a href="../about.html">关于</a>
-      <a href="../wholesale.html">批发</a>
       <a href="../en/index.html">English</a>
     </nav>
   </div>
@@ -34,7 +32,7 @@
 
 <section class="container" style="padding:40px 0;">
   <h2 style="margin-bottom:24px;">精选优惠</h2>
-  <div class="grid" id="featured"></div>
+  <div id="featured"></div>
 </section>
 
 <section class="container" style="padding:40px 0;">
@@ -67,5 +65,9 @@
 </footer>
 
 <script src="../js/products.js"></script>
+<script src="../js/render.js"></script>
+<script>
+  renderProducts('featured', null, true, 8);
+</script>
 </body>
 </html>

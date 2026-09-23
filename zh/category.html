@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>产品列表 — TIMEHOME</title>
+<title>产品列表 — TIMEHOME 清仓</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,30 +17,30 @@
       <a href="category.html?cat=dining">餐厅</a>
       <a href="category.html?cat=study">书房</a>
       <a href="category.html?cat=bedroom">卧室</a>
-      <a href="../about.html">关于</a>
-      <a href="../wholesale.html">批发</a>
       <a href="../en/index.html">English</a>
     </nav>
   </div>
 </header>
 
 <section class="container" style="padding:40px 0;">
-  <h2 style="margin-bottom:24px;" id="cat-title">产品列表</h2>
-  <div class="grid" id="category-list"></div>
+  <h2 id="cat-title" style="margin-bottom:24px;">产品列表</h2>
+  <div id="category-list"></div>
 </section>
 
 <footer class="footer">
   <div class="container">
     <div><b>TIMEHOME 清仓</b> — 广州市番禺区时光家居商行（个体工商户）</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495 | 仓库：佛山顺德</div>
   </div>
 </footer>
 
 <script src="../js/products.js"></script>
+<script src="../js/render.js"></script>
 <script>
   var catNames = { living:'客厅', dining:'餐厅', study:'书房', bedroom:'卧室' };
   var cat = new URLSearchParams(location.search).get('cat') || 'living';
   document.getElementById('cat-title').textContent = catNames[cat] || '产品列表';
+  renderProducts('category-list', cat);
 </script>
 </body>
 </html>
