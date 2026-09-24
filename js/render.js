@@ -41,20 +41,28 @@ function renderProducts(containerId, cat, onlyFeatured, limit) {
       var pct = Math.round((1 - p.price / p.originalPrice) * 100);
       saveBadge = '<span class="badge-save">Save ' + pct + '%</span>';
     }
+    var outOfStock = (p.stock <= 0);
     html += ''
-      + '<a class="product-card" href="' + detailUrl(p.id) + '">'
-      +   '<div class="img-wrap">'
-      +     '<img src="' + imgPath(p.images[0]) + '" alt="' + p.name + '" loading="lazy">'
-      +     saveBadge
+      + '<div class="product-card" style="display:flex;flex-direction:column;">'
+      +   '<a href="' + detailUrl(p.id) + '" style="text-decoration:none;color:inherit;">'
+      +     '<div class="img-wrap">'
+      +       '<img src="' + imgPath(p.images[0]) + '" alt="' + p.name + '" loading="lazy">'
+      +       saveBadge
+      +     '</div>'
+      +     '<h3>' + p.name + '</h3>'
+      +     '<p class="sku">' + p.id.toUpperCase() + '</p>'
+      +     '<div class="price">'
+      +       '<b>$' + p.price + '</b>'
+      +       (p.originalPrice ? '<s>$' + p.originalPrice + '</s>' : '')
+      +     '</div>'
+      +     '<div class="meta">' + p.dimensions + ' | Stock: ' + p.stock + '</div>'
+      +   '</a>'
+      +   '<div style="padding:0 16px 16px;">'
+      +     (outOfStock
+              ? '<button disabled style="width:100%;background:#ccc;color:#fff;padding:10px;border:none;border-radius:6px;cursor:not-allowed;">Out of Stock</button>'
+              : '<button onclick="addToCart(\'' + p.id + '\')" style="width:100%;background:#c9a96e;color:#fff;padding:10px;border:none;border-radius:6px;font-weight:600;cursor:pointer;">Add to Cart</button>')
       +   '</div>'
-      +   '<h3>' + p.name + '</h3>'
-      +   '<p class="sku">' + p.id.toUpperCase() + '</p>'
-      +   '<div class="price">'
-      +     '<b>$' + p.price + '</b>'
-      +     (p.originalPrice ? '<s>$' + p.originalPrice + '</s>' : '')
-      +   '</div>'
-      +   '<div class="meta">' + p.dimensions + ' | Stock: ' + p.stock + '</div>'
-      + '</a>';
+      + '</div>';
   });
   html += '</div>';
   container.innerHTML = html;

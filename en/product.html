@@ -17,6 +17,7 @@
       <a href="category.html?cat=dining">Dining</a>
       <a href="category.html?cat=study">Study</a>
       <a href="category.html?cat=bedroom">Bedroom</a>
+      <a href="../cart.html">Cart (<span id="cart-badge">0</span>)</a>
       <a href="../zh/index.html">中文</a>
     </nav>
   </div>
@@ -34,6 +35,7 @@
 </footer>
 
 <script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
 <script>
 (function () {
   var id = new URLSearchParams(location.search).get('id');
@@ -63,6 +65,11 @@
     saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Save ' + pct + '%</span>';
   }
 
+  var outOfStock = (p.stock <= 0);
+  var addBtn = outOfStock
+    ? '<button disabled style="background:#ccc;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;cursor:not-allowed;">Out of Stock</button>'
+    : '<button onclick="addToCart(\'' + p.id + '\')" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Add to Cart</button>';
+
   box.innerHTML = ''
     + '<div class="product-detail">'
     +   '<div class="main-img">'
@@ -77,6 +84,7 @@
     +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
     +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
     +     '</div>'
+    +     '<div style="margin:20px 0;">' + addBtn + '</div>'
     +     '<ul class="specs">'
     +       '<li><b>Dimensions:</b> ' + p.dimensions + '</li>'
     +       '<li><b>Material:</b> ' + p.material + '</li>'

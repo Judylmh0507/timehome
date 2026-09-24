@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart — TIMEHOME Clearance</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="en/index.html">English</a>
+      <a href="zh/index.html">中文</a>
+      <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container" style="padding:40px 0;">
+  <h1 style="margin-bottom:24px;">Shopping Cart</h1>
+  <div id="cart-content"></div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    renderCartPage();
+  });
+</script>
+</body>
+</html>
