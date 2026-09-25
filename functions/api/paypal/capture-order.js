@@ -1,14 +1,16 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
+
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 });
+  }
 
   try {
     const body = await request.json();
     const orderID = body.orderID;
 
     if (!orderID) {
-      return new Response(JSON.stringify({ error: 'Missing orderID' }), {
-        status: 400, headers: { 'Content-Type': 'application/json' }
-      });
+      return Response.json({ error: 'Missing orderID' }, { status: 400 });
     }
 
     const auth = btoa(env.PAYPAL_CLIENT_ID + ':' + env.PAYPAL_SECRET);
@@ -27,22 +29,16 @@ export async function onRequestPost(context) {
     const paypalData = await paypalRes.json();
 
     if (!paypalRes.ok) {
-      return new Response(JSON.stringify({ error: 'Capture failed', details: paypalData }), {
-        status: 500, headers: { 'Content-Type': 'application/json' }
-      });
+      return Response.json({ error: 'Capture failed', details: paypalData }, { status: 500 });
     }
 
-    return new Response(JSON.stringify({
+    return Response.json({
       success: true,
       status: paypalData.status,
       orderID: paypalData.id
-    }), {
-      headers: { 'Content-Type': 'application/json' }
     });
 
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), {
-      status: 500, headers: { 'Content-Type': 'application/json' }
-    });
+    return Response.json({ error: e.message }, { status: 500 });
   }
 }

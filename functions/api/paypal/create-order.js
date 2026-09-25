@@ -1,11 +1,14 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
+
+  if (request.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405 });
+  }
 
   try {
     const body = await request.json();
-    const cart = body.cart; // [{id, qty}, ...]
+    const cart = body.cart;
 
-    // 从 products.js 里读产品数据（内嵌一份，避免依赖前端）
     const PRODUCTS = [
       { id: 'i74-915', name: 'Napa Rec.Sofa Table', price: 159, stock: 16 },
       { id: 'i74-910', name: 'Napa Cocktail Table', price: 179, stock: 3 },
@@ -16,41 +19,25 @@ export async function onRequestPost(context) {
       { id: 'i77-6030', name: 'Trestle Table Base&Top', price: 299, stock: 5 }
     ];
 
-    // 1. 校验：总件数 ≥ 5
     const totalQty = cart.reduce((s, i) => s + i.qty, 0);
     if (totalQty < 5) {
-      return new Response(JSON.stringify({ error: 'Minimum 5 items required' }), {
-        status: 400, headers: { 'Content-Type': 'application/json' }
-      });
+      return Response.json({ error: 'Minimum 5 items required' }, { status: 400 });
     }
 
-    // 2. 校验：每款数量 ≤ stock
     for (const item of cart) {
       const p = PRODUCTS.find(x => x.id === item.id);
-      if (!p) {
-        return new Response(JSON.stringify({ error: 'Product not found: ' + item.id }), {
-          status: 400, headers: { 'Content-Type': 'application/json' }
-        });
-      }
-      if (item.qty < 1) {
-        return new Response(JSON.stringify({ error: 'Min 1 per item' }), {
-          status: 400, headers: { 'Content-Type': 'application/json' }
-        });
-      }
+      if (!p) return Response.json({ error: 'Product not found: ' + item.id }, { status: 400 });
+      if (item.qty < 1) return Response.json({ error: 'Min 1 per item' }, { status: 400 });
       if (item.qty > p.stock) {
-        return new Response(JSON.stringify({ error: p.name + ' only has ' + p.stock + ' in stock' }), {
-          status: 400, headers: { 'Content-Type': 'application/json' }
-        });
+        return Response.json({ error: p.name + ' only has ' + p.stock + ' in stock' }, { status: 400 });
       }
     }
 
-    // 3. 计算总金额
     const totalUSD = cart.reduce((sum, item) => {
       const p = PRODUCTS.find(x => x.id === item.id);
       return sum + (p.price * item.qty);
     }, 0);
 
-    // 4. 调用 PayPal API 创建订单
     const auth = btoa(env.PAYPAL_CLIENT_ID + ':' + env.PAYPAL_SECRET);
     const baseURL = env.PAYPAL_MODE === 'live'
       ? 'https://api-m.paypal.com'
@@ -65,10 +52,7 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         intent: 'CAPTURE',
         purchase_units: [{
-          amount: {
-            currency_code: 'USD',
-            value: totalUSD.toFixed(2)
-          },
+          amount: { currency_code: 'USD', value: totalUSD.toFixed(2) },
           description: 'TIMEHOME Clearance Order',
           custom_id: JSON.stringify(cart)
         }],
@@ -83,18 +67,12 @@ export async function onRequestPost(context) {
     const paypalData = await paypalRes.json();
 
     if (!paypalRes.ok) {
-      return new Response(JSON.stringify({ error: 'PayPal error', details: paypalData }), {
-        status: 500, headers: { 'Content-Type': 'application/json' }
-      });
+      return Response.json({ error: 'PayPal error', details: paypalData }, { status: 500 });
     }
 
-    return new Response(JSON.stringify({ orderID: paypalData.id }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return Response.json({ orderID: paypalData.id });
 
   } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), {
-      status: 500, headers: { 'Content-Type': 'application/json' }
-    });
+    return Response.json({ error: e.message }, { status: 500 });
   }
 }
