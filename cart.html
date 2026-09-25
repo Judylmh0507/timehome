@@ -23,6 +23,7 @@
 <section class="container" style="padding:40px 0;">
   <h1 style="margin-bottom:24px;">Shopping Cart</h1>
   <div id="cart-content"></div>
+  <div id="paypal-button-container" style="margin-top:24px;max-width:400px;"></div>
 </section>
 
 <footer class="footer">
@@ -34,10 +35,49 @@
 
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AYox1L63hFTr3lVmqQ7o3-fmh-4UUB6x4KqeSwKxUgnihnjkZvugqZzQFCCQsfQTfpLpWc1ttXqCJRsE&currency=USD"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    renderCartPage();
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  renderCartPage();
+
+  if (typeof paypal !== 'undefined') {
+    paypal.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+      createOrder: async function () {
+        var cart = getCart();
+        var list = Object.keys(cart).map(function (id) {
+          return { id: id, qty: cart[id] };
+        });
+        var res = await fetch('/api/paypal/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cart: list })
+        });
+        var data = await res.json();
+        if (data.error) { alert(data.error); throw new Error(data.error); }
+        return data.orderID;
+      },
+      onApprove: async function (data) {
+        var res = await fetch('/api/paypal/capture-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderID: data.orderID })
+        });
+        var result = await res.json();
+        if (result.success) {
+          localStorage.removeItem('timehome_cart');
+          alert('Payment successful! Order ID: ' + result.orderID);
+          window.location.href = 'index.html';
+        } else {
+          alert('Payment failed: ' + (result.error || 'Unknown error'));
+        }
+      },
+      onError: function (err) {
+        console.error('PayPal error:', err);
+      }
+    }).render('#paypal-button-container');
+  }
+});
 </script>
 </body>
 </html>
