@@ -35,14 +35,20 @@
 
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=BAAFqtuKfj_0xOdlzo_1xvqsS8hmg7j4_fBIzROz7nTG6h4a6lvzHHu_cuua1kfofxRnqk8XIuAxGk9DLc&currency=USD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAFqtuKfj_0xOdlzo_1xvqsS8hmg7j4_fBIzROz7nTG6h4a6lvzHHu_cuua1kfofxRnqk8XIuAxGk9DLc&currency=USD&components=buttons&disable-funding=credit"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   renderCartPage();
 
   if (typeof paypal !== 'undefined') {
     paypal.Buttons({
-      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+      style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'paypal',
+        height: 45
+      },
       createOrder: async function () {
         var cart = getCart();
         var list = Object.keys(cart).map(function (id) {
@@ -58,24 +64,34 @@ document.addEventListener('DOMContentLoaded', function () {
         return data.orderID;
       },
       onApprove: async function (data) {
-        var res = await fetch('/api/paypal/capture-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ orderID: data.orderID })
-        });
-        var result = await res.json();
-        if (result.success) {
-          localStorage.removeItem('timehome_cart');
-          alert('Payment successful! Order ID: ' + result.orderID);
-          window.location.href = 'index.html';
-        } else {
-          alert('Payment failed: ' + (result.error || 'Unknown error'));
+        console.log('=== onApprove triggered ===', data);
+        try {
+          var res = await fetch('/api/paypal/capture-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderID: data.orderID })
+          });
+          var result = await res.json();
+          console.log('=== capture result ===', result);
+          if (result.success) {
+            localStorage.removeItem('timehome_cart');
+            alert('Payment successful! Order ID: ' + result.orderID);
+            window.location.href = 'index.html';
+          } else {
+            alert('Payment failed: ' + (result.error || 'Unknown error'));
+          }
+        } catch (e) {
+          console.error('Capture error:', e);
+          alert('Capture error: ' + e.message);
         }
       },
       onError: function (err) {
         console.error('PayPal error:', err);
+        alert('PayPal error: ' + (err.message || JSON.stringify(err)));
       }
     }).render('#paypal-button-container');
+  } else {
+    console.error('PayPal SDK not loaded');
   }
 });
 </script>
