@@ -1,7 +1,4 @@
 // ===== 购物车逻辑 =====
-// 存 localStorage，key = 'timehome_cart'
-// 结构：{ "i74-915": 2, "i77-455": 1 }
-
 var CART_KEY = 'timehome_cart';
 
 function getCart() {
@@ -53,6 +50,24 @@ function setQty(id, qty) {
   var cart = getCart();
   cart[id] = qty;
   saveCart(cart);
+}
+
+function increaseQty(id) {
+  var cart = getCart();
+  var current = cart[id] || 0;
+  setQty(id, current + 1);
+  renderCartPage();
+}
+
+function decreaseQty(id) {
+  var cart = getCart();
+  var current = cart[id] || 0;
+  if (current <= 1) {
+    removeFromCart(id);
+  } else {
+    setQty(id, current - 1);
+  }
+  renderCartPage();
 }
 
 function cartTotalQty() {
@@ -124,6 +139,15 @@ function renderCartPage() {
     var qty = cart[id];
     var lineTotal = p.price * qty;
 
+    var qtyControls = ''
+      + '<div style="display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:6px;overflow:hidden;">'
+      +   '<button onclick="decreaseQty(\'' + id + '\')" '
+      +     'style="width:32px;height:32px;background:#f5f5f5;border:none;font-size:18px;cursor:pointer;line-height:1;">−</button>'
+      +   '<span style="width:40px;text-align:center;font-weight:600;">' + qty + '</span>'
+      +   '<button onclick="increaseQty(\'' + id + '\')" '
+      +     'style="width:32px;height:32px;background:#f5f5f5;border:none;font-size:18px;cursor:pointer;line-height:1;">+</button>'
+      + '</div>';
+
     html += '<tr style="border-bottom:1px solid #f0f0f0;">'
           + '<td style="padding:12px 0;display:flex;align-items:center;gap:12px;">'
           +   '<img src="/img/' + p.images[0].toLowerCase() + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">'
@@ -131,11 +155,7 @@ function renderCartPage() {
           +   '<div style="font-size:12px;color:#888;">' + p.id.toUpperCase() + ' | Stock: ' + p.stock + '</div></div>'
           + '</td>'
           + '<td style="padding:12px 0;">$' + p.price + '</td>'
-          + '<td style="padding:12px 0;">'
-          +   '<input type="number" min="1" max="' + p.stock + '" value="' + qty + '" '
-          +   'onchange="setQty(\'' + id + '\', this.value); renderCartPage();" '
-          +   'style="width:60px;padding:4px 8px;border:1px solid #ddd;border-radius:4px;">'
-          + '</td>'
+          + '<td style="padding:12px 0;">' + qtyControls + '</td>'
           + '<td style="padding:12px 0;font-weight:600;">$' + lineTotal + '</td>'
           + '<td style="padding:12px 0;text-align:right;">'
           +   '<a href="#" onclick="event.preventDefault(); removeFromCart(\'' + id + '\'); renderCartPage();" '
@@ -160,24 +180,17 @@ function renderCartPage() {
           +   'Minimum order: <b>5 items</b> total. You have <b>' + totalQty + '</b>. '
           +   'Please add ' + (5 - totalQty) + ' more item(s).'
           + '</div>';
-    html += '<button disabled style="background:#ccc;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;cursor:not-allowed;">Checkout (min 5 items)</button>';
-  } else {
-    html += '<button onclick="checkout()" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Proceed to Checkout →</button>';
   }
 
   container.innerHTML = html;
-}
 
-function checkout() {
-  var totalQty = cartTotalQty();
-  if (totalQty < 5) {
-    alert('Minimum order is 5 items.');
-    return;
+  // 渲染完后，重新计算价格
+  if (typeof updatePrices === 'function') {
+    updatePrices();
   }
-  alert('Checkout function is not connected to payment yet. Cart summary:\n\n' +
-        'Items: ' + totalQty + '\n' +
-        'Subtotal: $' + cartSubtotal() + '\n' +
-        'Volume: ' + cartTotalVolume() + ' CBM');
+  if (typeof updateCheckoutButton === 'function') {
+    updateCheckoutButton();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
