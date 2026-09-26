@@ -5,6 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cart — TIMEHOME Clearance</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .terms-box {
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 20px 24px;
+    border-radius: 6px;
+    margin: 24px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .terms-box h3 { margin: 0 0 12px; font-size: 16px; }
+  .terms-box ol { padding-left: 20px; margin: 0; }
+  .terms-box li { margin-bottom: 10px; }
+  .terms-box .term-en { display: block; }
+  .terms-box .term-zh { display: none; }
+  body.lang-zh .terms-box .term-en { display: none; }
+  body.lang-zh .terms-box .term-zh { display: block; }
+
+  .shipping-box {
+    background: #f5f5f5;
+    padding: 20px 24px;
+    border-radius: 6px;
+    margin: 24px 0;
+  }
+  .shipping-box h3 { margin: 0 0 12px; font-size: 16px; }
+  .shipping-option {
+    display: block;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .shipping-option:hover { border-color: #c9a96e; }
+  .shipping-option.selected { border-color: #c9a96e; background: #fdf9f3; }
+  .shipping-option input { margin-right: 10px; }
+  .shipping-option .price { float: right; font-weight: 600; color: #c9a96e; }
+
+  .agree-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    background: #f0f7ff;
+    border-radius: 6px;
+    margin: 20px 0;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .agree-box input { margin-top: 3px; }
+
+  .lang-toggle {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    background: #c9a96e;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+  }
+</style>
 </head>
 <body>
 
@@ -16,14 +81,79 @@
       <a href="en/index.html">English</a>
       <a href="zh/index.html">中文</a>
       <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
+      <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">中文</button>
     </nav>
   </div>
 </header>
 
 <section class="container" style="padding:40px 0;">
-  <h1 style="margin-bottom:24px;">Shopping Cart</h1>
+  <h1 style="margin-bottom:24px;" id="cart-title">Shopping Cart</h1>
   <div id="cart-content"></div>
+
+  <div class="terms-box" id="terms-box">
+    <h3 id="terms-title">American-Style Vintage Furniture Clearance — Before You Order</h3>
+    <ol>
+      <li>
+        <span class="term-en"><b>OEM overstock, not new.</b> Made 2009–2012, sealed in a bonded warehouse 10+ years. Boxes may be dusty or damaged; furniture may have moisture spots or minor marks. Cosmetic only — no impact on structure or use. Buyer handles cleaning.</span>
+        <span class="term-zh"><b>OEM 库存尾货，非新品。</b>生产于 2009–2012 年前后，保税仓封存 10 年以上。外箱可能有积灰或破损，家具表面可能有潮点或轻微痕迹。仅为外观问题，不影响结构和使用，买家自行清洁维护。</span>
+      </li>
+      <li>
+        <span class="term-en"><b>5-unit minimum. EXW Foshan Shunde.</b> Freight, customs, and other fees not included. Ships or ready for pickup within 48 hours after payment.</span>
+        <span class="term-zh"><b>5 件起批，EXW 佛山顺德仓。</b>不含运费、报关费及其他费用。付款后 48 小时内可发货或上门提货。</span>
+      </li>
+      <li>
+        <span class="term-en"><b>Loaded = delivered.</b> Buyer arranges pickup and loading. Any damage or loss after loading is on the buyer. Cargo insurance recommended.</span>
+        <span class="term-zh"><b>装车即交付。</b>买家自行安排提货和装车。装车后的货损或丢失由买家承担。建议购买运输保险。</span>
+      </li>
+      <li>
+        <span class="term-en"><b>Full payment before shipment. No returns for non-structural issues.</b> Structural issues must be reported in writing within 7 days of receipt. "Receipt" means the date the goods arrive at the buyer's designated destination and are signed for. After that, goods are considered accepted.</span>
+        <span class="term-zh"><b>发货前付清全款，非结构性问题不退不换。</b>结构性问题须在收货后 7 日内书面提出。"收货"指货物到达买家指定目的地并完成签收之日，逾期视为验收合格。</span>
+      </li>
+      <li>
+        <span class="term-en"><b>Declare as "used / unbranded furniture."</b> No brand authorization included. Please don't use the original brand name for marketing or ads.</span>
+        <span class="term-zh"><b>请按"二手/无品牌家具"报关。</b>不含品牌授权文件，请勿使用原品牌名称进行宣传或投放广告。</span>
+      </li>
+      <li>
+        <span class="term-en"><b>Pick a reliable logistics partner for bulky cross-border goods.</b> Wood fumigation / IPPC marking is the buyer's responsibility. Customs delays or returns from missing documents are on the buyer.</span>
+        <span class="term-zh"><b>跨境大件请选择可靠物流。</b>木质熏蒸 / IPPC 标识由买家自行负责。因手续不全导致的扣关或退运由买家承担。</span>
+      </li>
+    </ol>
+    <p style="margin-top:12px;font-style:italic;" class="term-en">This is clearance stock — prices already reflect the cosmetic imperfections. Placing an order means you accept these terms.</p>
+    <p style="margin-top:12px;font-style:italic;" class="term-zh">此为库存清仓，价格已充分反映外观瑕疵。下单即视为接受以上条款。</p>
+  </div>
+
+  <div class="shipping-box" id="shipping-box">
+    <h3 id="shipping-title">Choose Shipping Method</h3>
+    <label class="shipping-option selected" data-method="exw">
+      <input type="radio" name="shipping" value="exw" checked onchange="selectShipping('exw')">
+      <span id="ship-exw">EXW Foshan Shunde (self pickup) — base price</span>
+      <span class="price" id="price-exw"></span>
+    </label>
+    <label class="shipping-option" data-method="fca">
+      <input type="radio" name="shipping" value="fca" onchange="selectShipping('fca')">
+      <span id="ship-fca">FCA Shunde — base +15%</span>
+      <span class="price" id="price-fca"></span>
+    </label>
+    <label class="shipping-option" data-method="fob">
+      <input type="radio" name="shipping" value="fob" onchange="selectShipping('fob')">
+      <span id="ship-fob">FOB Guangzhou/Shenzhen (incl. customs & loading) — base +25%</span>
+      <span class="price" id="price-fob"></span>
+    </label>
+  </div>
+
+  <label class="agree-box">
+    <input type="checkbox" id="agree-check" onchange="updateCheckoutButton()">
+    <span id="agree-text">I have read and accept the above terms.</span>
+  </label>
+
+  <div style="font-size:22px;margin:16px 0;">
+    <span id="total-label">Total:</span>
+    <b style="color:#c9a96e;margin-left:8px;" id="final-total">$0</b>
+    <span style="font-size:14px;color:#888;margin-left:12px;" id="total-note"></span>
+  </div>
+
   <div id="paypal-button-container" style="margin-top:24px;max-width:400px;"></div>
+  <div id="paypal-disabled-msg" style="margin-top:12px;color:#888;font-size:14px;"></div>
 </section>
 
 <footer class="footer">
@@ -37,19 +167,98 @@
 <script src="js/cart.js"></script>
 <script src="https://www.paypal.com/sdk/js?client-id=BAAFqtuKfj_0xOdlzo_1xvqsS8hmg7j4_fBIzROz7nTG6h4a6lvzHHu_cuua1kfofxRnqk8XIuAxGk9DLc&currency=USD&components=buttons&disable-funding=credit"></script>
 <script>
+// ===== 中英文切换 =====
+function toggleLang() {
+  var body = document.body;
+  var btn = document.getElementById('lang-btn');
+  var isZh = body.classList.toggle('lang-zh');
+  btn.textContent = isZh ? 'English' : '中文';
+
+  // 更新固定标题
+  document.getElementById('cart-title').textContent = isZh ? '购物车' : 'Shopping Cart';
+  document.getElementById('terms-title').textContent = isZh
+    ? '美式复古家具清仓说明 — 下单前请确认'
+    : 'American-Style Vintage Furniture Clearance — Before You Order';
+  document.getElementById('shipping-title').textContent = isZh ? '选择提货方式' : 'Choose Shipping Method';
+  document.getElementById('ship-exw').textContent = isZh ? 'EXW 顺德仓（自提）— 现价' : 'EXW Foshan Shunde (self pickup) — base price';
+  document.getElementById('ship-fca').textContent = isZh ? 'FCA 顺德 — 现价+15%' : 'FCA Shunde — base +15%';
+  document.getElementById('ship-fob').textContent = isZh ? 'FOB 广州/深圳（含报关装船）— 现价+25%' : 'FOB Guangzhou/Shenzhen (incl. customs & loading) — base +25%';
+  document.getElementById('agree-text').textContent = isZh
+    ? '我已阅读并接受以上条款。'
+    : 'I have read and accept the above terms.';
+  document.getElementById('total-label').textContent = isZh ? '总金额：' : 'Total:';
+  updateCheckoutButton();
+}
+
+// ===== 提货方式 =====
+var shippingMultiplier = { exw: 1, fca: 1.15, fob: 1.25 };
+var shippingLabels = {
+  exw: { en: 'EXW Foshan Shunde', zh: 'EXW 顺德仓' },
+  fca: { en: 'FCA Shunde', zh: 'FCA 顺德' },
+  fob: { en: 'FOB Guangzhou/Shenzhen', zh: 'FOB 广州/深圳' }
+};
+var currentShipping = 'exw';
+
+function selectShipping(method) {
+  currentShipping = method;
+  document.querySelectorAll('.shipping-option').forEach(function (el) {
+    el.classList.toggle('selected', el.getAttribute('data-method') === method);
+  });
+  updatePrices();
+  updateCheckoutButton();
+}
+
+function getBaseTotal() {
+  return cartSubtotal();
+}
+
+function getFinalTotal() {
+  return Math.round(getBaseTotal() * shippingMultiplier[currentShipping] * 100) / 100;
+}
+
+function updatePrices() {
+  var base = getBaseTotal();
+  document.getElementById('price-exw').textContent = '$' + base.toFixed(2);
+  document.getElementById('price-fca').textContent = '$' + (base * 1.15).toFixed(2);
+  document.getElementById('price-fob').textContent = '$' + (base * 1.25).toFixed(2);
+  document.getElementById('final-total').textContent = '$' + getFinalTotal().toFixed(2);
+  document.getElementById('total-note').textContent = '(' + shippingLabels[currentShipping].en + ')';
+}
+
+function updateCheckoutButton() {
+  var checked = document.getElementById('agree-check').checked;
+  var msg = document.getElementById('paypal-disabled-msg');
+  var isZh = document.body.classList.contains('lang-zh');
+  if (!checked) {
+    msg.textContent = isZh
+      ? '请先勾选"我已阅读并接受以上条款"后再付款。'
+      : 'Please check "I have read and accept the above terms" before payment.';
+  } else {
+    msg.textContent = '';
+  }
+}
+
+// ===== 渲染购物车 + 初始化价格 =====
 document.addEventListener('DOMContentLoaded', function () {
   renderCartPage();
+  updatePrices();
+  updateCheckoutButton();
 
   if (typeof paypal !== 'undefined') {
     paypal.Buttons({
-      style: {
-        layout: 'vertical',
-        color: 'gold',
-        shape: 'rect',
-        label: 'paypal',
-        height: 45
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal', height: 45 },
+      onInit: function (data, actions) {
+        // 未勾选时禁用按钮
+        actions.disable();
+        document.getElementById('agree-check').addEventListener('change', function (e) {
+          if (e.target.checked) { actions.enable(); }
+          else { actions.disable(); }
+        });
       },
       createOrder: async function () {
+        var checked = document.getElementById('agree-check').checked;
+        if (!checked) { throw new Error('Please accept the terms first.'); }
+
         var cart = getCart();
         var list = Object.keys(cart).map(function (id) {
           return { id: id, qty: cart[id] };
@@ -57,32 +266,25 @@ document.addEventListener('DOMContentLoaded', function () {
         var res = await fetch('/api/paypal/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ cart: list })
+          body: JSON.stringify({ cart: list, shipping: currentShipping })
         });
         var data = await res.json();
         if (data.error) { alert(data.error); throw new Error(data.error); }
         return data.orderID;
       },
       onApprove: async function (data) {
-        console.log('=== onApprove triggered ===', data);
-        try {
-          var res = await fetch('/api/paypal/capture-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ orderID: data.orderID })
-          });
-          var result = await res.json();
-          console.log('=== capture result ===', result);
-          if (result.success) {
-            localStorage.removeItem('timehome_cart');
-            alert('Payment successful! Order ID: ' + result.orderID);
-            window.location.href = 'index.html';
-          } else {
-            alert('Payment failed: ' + (result.error || 'Unknown error'));
-          }
-        } catch (e) {
-          console.error('Capture error:', e);
-          alert('Capture error: ' + e.message);
+        var res = await fetch('/api/paypal/capture-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderID: data.orderID })
+        });
+        var result = await res.json();
+        if (result.success) {
+          localStorage.removeItem('timehome_cart');
+          alert('Payment successful! Order ID: ' + result.orderID);
+          window.location.href = 'index.html';
+        } else {
+          alert('Payment failed: ' + (result.error || 'Unknown error'));
         }
       },
       onError: function (err) {
@@ -90,8 +292,6 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('PayPal error: ' + (err.message || JSON.stringify(err)));
       }
     }).render('#paypal-button-container');
-  } else {
-    console.error('PayPal SDK not loaded');
   }
 });
 </script>
