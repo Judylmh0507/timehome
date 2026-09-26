@@ -14,9 +14,18 @@ function saveCart(cart) {
   updateCartBadge();
 }
 
+// 统一的产品查找（带测试产品兜底）
+function findProduct(id) {
+  var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
+  if (!p && id === 'test-1') {
+    p = { id: 'test-1', name: 'Test Product', price: 1, stock: 100, images: ['i74-915-1.jpg'], packagingVolume: '0.01CBM' };
+  }
+  return p;
+}
+
 function addToCart(id, qty) {
   qty = qty || 1;
-  var product = window.PRODUCTS.filter(function (p) { return p.id === id; })[0];
+  var product = findProduct(id);
   if (!product) { alert('Product not found'); return; }
 
   var cart = getCart();
@@ -40,7 +49,7 @@ function removeFromCart(id) {
 }
 
 function setQty(id, qty) {
-  var product = window.PRODUCTS.filter(function (p) { return p.id === id; })[0];
+  var product = findProduct(id);
   if (!product) return;
 
   qty = parseInt(qty, 10);
@@ -81,9 +90,7 @@ function cartSubtotal() {
   var cart = getCart();
   var total = 0;
   for (var id in cart) {
-    var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
+    var p = findProduct(id);
     if (p) { total += p.price * cart[id]; }
   }
   return total;
@@ -93,9 +100,7 @@ function cartTotalVolume() {
   var cart = getCart();
   var total = 0;
   for (var id in cart) {
-    var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
+    var p = findProduct(id);
     if (p && p.packagingVolume) {
       var v = parseFloat(p.packagingVolume.replace(/[^\d.]/g, ''));
       if (!isNaN(v)) { total += v * cart[id]; }
@@ -138,9 +143,7 @@ function renderCartPage() {
         + '<th></th></tr></thead><tbody>';
 
   ids.forEach(function (id) {
-    var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
-    if (!p && id === "test-1") { p = { id: "test-1", name: "Test Product", price: 1, stock: 100, images: ["i74-915-1.jpg"] }; }
+    var p = findProduct(id);
     if (!p) return;
     var qty = cart[id];
     var lineTotal = p.price * qty;
@@ -154,9 +157,11 @@ function renderCartPage() {
       +     'style="width:32px;height:32px;background:#f5f5f5;border:none;font-size:18px;cursor:pointer;line-height:1;">+</button>'
       + '</div>';
 
+    var imgSrc = p.images && p.images[0] ? '/img/' + p.images[0].toLowerCase() : '';
+
     html += '<tr style="border-bottom:1px solid #f0f0f0;">'
           + '<td style="padding:12px 0;display:flex;align-items:center;gap:12px;">'
-          +   '<img src="/img/' + p.images[0].toLowerCase() + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">'
+          +   '<img src="' + imgSrc + '" style="width:60px;height:60px;object-fit:cover;border-radius:4px;">'
           +   '<div><div style="font-weight:600;">' + p.name + '</div>'
           +   '<div style="font-size:12px;color:#888;">' + p.id.toUpperCase() + ' | Stock: ' + p.stock + '</div></div>'
           + '</td>'
@@ -181,22 +186,10 @@ function renderCartPage() {
         +     '<span>Subtotal:</span><b style="color:#c9a96e;">$' + subtotal + '</b></div>'
         + '</div>';
 
-  if (totalQty < 5) {
-    html += '<div style="background:#fff8e1;border-left:4px solid #ffc107;padding:12px 16px;border-radius:4px;margin-bottom:16px;">'
-          +   'Minimum order: <b>5 items</b> total. You have <b>' + totalQty + '</b>. '
-          +   'Please add ' + (5 - totalQty) + ' more item(s).'
-          + '</div>';
-  }
-
   container.innerHTML = html;
 
-  // 渲染完后，重新计算价格
-  if (typeof updatePrices === 'function') {
-    updatePrices();
-  }
-  if (typeof updateCheckoutButton === 'function') {
-    updateCheckoutButton();
-  }
+  if (typeof updatePrices === 'function') { updatePrices(); }
+  if (typeof updateCheckoutButton === 'function') { updateCheckoutButton(); }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
