@@ -281,8 +281,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var result = await res.json();
         if (result.success) {
           localStorage.removeItem('timehome_cart');
-          alert('Payment successful! Order ID: ' + result.orderID);
-          window.location.href = 'index.html';
+          alert("Payment successful! Order ID: " + result.orderID); setTimeout(function(){  }, 2000);
+          
         } else {
           alert('Payment failed: ' + (result.error || 'Unknown error'));
         }
