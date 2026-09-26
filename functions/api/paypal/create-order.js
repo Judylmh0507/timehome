@@ -14,26 +14,32 @@ export async function onRequest(context) {
     const multiplier = MULTIPLIERS[shipping] || 1;
 
     const PRODUCTS = [
-      { id: 'i74-915', name: 'Napa Rec.Sofa Table', price: 159, stock: 16 },
-      { id: 'i74-910', name: 'Napa Cocktail Table', price: 179, stock: 3 },
-      { id: 'i77-364wd', name: '64" Writing Desk', price: 179, stock: 17 },
-      { id: 'i77-455', name: 'Chesser', price: 199, stock: 4 },
-      { id: 'i77-456', name: "Gentleman's Chest w/storage", price: 199, stock: 6 },
-      { id: 'i77-485', name: 'Entertainment Chest', price: 199, stock: 6 },
-      { id: 'i77-6030', name: 'Trestle Table Base&Top', price: 299, stock: 5 }
+      { id: 'test-1', name: 'Test Product', price: 1 },
+      { id: 'i74-915', name: 'Napa Rec.Sofa Table', price: 159 },
+      { id: 'i74-910', name: 'Napa Cocktail Table', price: 179 },
+      { id: 'i77-364wd', name: '64" Writing Desk', price: 179 },
+      { id: 'i77-455', name: 'Chesser', price: 199 },
+      { id: 'i77-456', name: "Gentleman's Chest w/storage", price: 199 },
+      { id: 'i77-485', name: 'Entertainment Chest', price: 199 },
+      { id: 'i77-6030', name: 'Trestle Table Base&Top', price: 299 }
     ];
 
+    // 临时改成 1 件起批（测试完改回 5）
+    const MIN_QTY = 1;
     const totalQty = cart.reduce((s, i) => s + i.qty, 0);
-    if (totalQty < 5) {
-      return Response.json({ error: 'Minimum 5 items required' }, { status: 400 });
+    if (totalQty < MIN_QTY) {
+      return Response.json({ error: 'Minimum ' + MIN_QTY + ' items required' }, { status: 400 });
     }
 
     for (const item of cart) {
       const p = PRODUCTS.find(x => x.id === item.id);
       if (!p) return Response.json({ error: 'Product not found: ' + item.id }, { status: 400 });
       if (item.qty < 1) return Response.json({ error: 'Min 1 per item' }, { status: 400 });
-      if (item.qty > p.stock) {
-        return Response.json({ error: p.name + ' only has ' + p.stock + ' in stock' }, { status: 400 });
+
+      const stockStr = await env.TIMEHOME_STOCK.get(item.id);
+      const stock = stockStr ? parseInt(stockStr, 10) : 0;
+      if (item.qty > stock) {
+        return Response.json({ error: p.name + ' only has ' + stock + ' in stock' }, { status: 400 });
       }
     }
 

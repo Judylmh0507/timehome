@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEST — Do Not Use</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container" style="padding:40px 0;">
+  <h1>Test Product — Do Not Buy</h1>
+  <p style="color:#d32f2f;font-weight:600;">This page is for PayPal Live testing only. Will be deleted after testing.</p>
+
+  <div style="margin:24px 0;">
+    <button onclick="addTestToCart()" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">
+      Add Test Product ($1) to Cart
+    </button>
+  </div>
+
+  <p><a href="cart.html">Go to Cart →</a></p>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME Clearance</b> &mdash; Test Page</div>
+  </div>
+</footer>
+
+<script>
+function addTestToCart() {
+  var cart = JSON.parse(localStorage.getItem('timehome_cart') || '{}');
+  cart['test-1'] = (cart['test-1'] || 0) + 1;
+  localStorage.setItem('timehome_cart', JSON.stringify(cart));
+  alert('Test product added to cart. Cart count: ' + Object.values(cart).reduce((a,b)=>a+b,0));
+  document.getElementById('cart-badge').textContent = Object.values(cart).reduce((a,b)=>a+b,0);
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var cart = JSON.parse(localStorage.getItem('timehome_cart') || '{}');
+  document.getElementById('cart-badge').textContent = Object.values(cart).reduce((a,b)=>a+b,0);
+});
+</script>
+</body>
+</html>
