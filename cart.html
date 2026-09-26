@@ -153,7 +153,7 @@
   </div>
 
   <div id="paypal-button-container" style="margin-top:24px;max-width:400px;"></div>
-  <div id="paypal-disabled-msg" style="margin-top:12px;color:#888;font-size:14px;"></div>
+  <div id="paypal-disabled-msg" style="margin-top:12px;color:#c9a96e;font-size:14px;font-weight:600;"></div>
 </section>
 
 <footer class="footer">
@@ -174,7 +174,6 @@ function toggleLang() {
   var isZh = body.classList.toggle('lang-zh');
   btn.textContent = isZh ? 'English' : '中文';
 
-  // 更新固定标题
   document.getElementById('cart-title').textContent = isZh ? '购物车' : 'Shopping Cart';
   document.getElementById('terms-title').textContent = isZh
     ? '美式复古家具清仓说明 — 下单前请确认'
@@ -231,8 +230,8 @@ function updateCheckoutButton() {
   var isZh = document.body.classList.contains('lang-zh');
   if (!checked) {
     msg.textContent = isZh
-      ? '请先勾选"我已阅读并接受以上条款"后再付款。'
-      : 'Please check "I have read and accept the above terms" before payment.';
+      ? '⚠️ 请先勾选"我已阅读并接受以上条款"后再付款。'
+      : '⚠️ Please check "I have read and accept the above terms" before payment.';
   } else {
     msg.textContent = '';
   }
@@ -247,17 +246,16 @@ document.addEventListener('DOMContentLoaded', function () {
   if (typeof paypal !== 'undefined') {
     paypal.Buttons({
       style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal', height: 45 },
-      onInit: function (data, actions) {
-        // 未勾选时禁用按钮
-        actions.disable();
-        document.getElementById('agree-check').addEventListener('change', function (e) {
-          if (e.target.checked) { actions.enable(); }
-          else { actions.disable(); }
-        });
-      },
       createOrder: async function () {
+        // 点击时检查勾选框（比 onInit disable 更可靠）
         var checked = document.getElementById('agree-check').checked;
-        if (!checked) { throw new Error('Please accept the terms first.'); }
+        if (!checked) {
+          var isZh = document.body.classList.contains('lang-zh');
+          alert(isZh
+            ? '请先勾选"我已阅读并接受以上条款"后再付款。'
+            : 'Please check "I have read and accept the above terms" before payment.');
+          throw new Error('Terms not accepted');
+        }
 
         var cart = getCart();
         var list = Object.keys(cart).map(function (id) {
@@ -280,9 +278,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         var result = await res.json();
         if (result.success) {
+          // 立即清空购物车数据 + 重渲染界面
           localStorage.removeItem('timehome_cart');
-          alert("Payment successful! Order ID: " + result.orderID); setTimeout(function(){  }, 2000);
-          
+          renderCartPage();
+          updateCartBadge();
+          alert('Payment successful! Order ID: ' + result.orderID);
+          setTimeout(function () {
+            window.location.href = 'index.html';
+          }, 2000);
         } else {
           alert('Payment failed: ' + (result.error || 'Unknown error'));
         }
