@@ -182,6 +182,8 @@ function renderCartPage() {
         +     '<span>Total items:</span><b>' + totalQty + '</b></div>'
         +   '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">'
         +     '<span>Total volume:</span><b>' + volume + ' CBM</b></div>'
+      + '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">'
+      + '<span>Total gross weight:</span><b>' + cartTotalGrossWeight() + ' kg</b></div>'
         +   '<div style="display:flex;justify-content:space-between;font-size:20px;padding-top:12px;border-top:1px solid #ddd;">'
         +     '<span>Subtotal:</span><b style="color:#c9a96e;">$' + subtotal + '</b></div>'
         + '</div>';
@@ -195,3 +197,29 @@ function renderCartPage() {
 document.addEventListener('DOMContentLoaded', function () {
   updateCartBadge();
 });
+
+function cartTotalGrossWeight() {
+  var cart = getCart();
+  var total = 0;
+  for (var id in cart) {
+    var p = findProduct(id);
+    if (p && p.grossWeight) {
+      var w = parseFloat(p.grossWeight.replace(/[^\d.]/g, ''));
+      if (!isNaN(w)) { total += w * cart[id]; }
+    }
+  }
+  return total.toFixed(1);
+}
+
+function cartTotalGrossWeight() {
+  var cart = getCart();
+  var total = 0;
+  for (var id in cart) {
+    var p = findProduct(id);
+    if (p && p.grossWeight) {
+      var w = parseFloat(p.grossWeight.replace(/[^\d.]/g, ''));
+      if (!isNaN(w)) { total += w * cart[id]; }
+    }
+  }
+  return total.toFixed(1);
+}
