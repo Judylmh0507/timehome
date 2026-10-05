@@ -5,6 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wholesale — TIMEHOME Clearance</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .ws-container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+  .ws-section { margin: 40px 0; }
+  .ws-section h2 { font-size: 24px; margin-bottom: 16px; color: #2a2a28; }
+  .ws-section h3 { font-size: 18px; margin: 24px 0 12px; color: #2a2a28; }
+  .ws-section p { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 12px; }
+  .ws-section ul { padding-left: 20px; margin-bottom: 16px; }
+  .ws-section li { font-size: 15px; line-height: 1.8; color: #444; }
+  .ws-section table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .ws-section table td { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; vertical-align: top; }
+  .ws-section table td:first-child { width: 140px; color: #666; font-weight: 600; }
+  .ws-warehouse { margin: 60px 0 40px; text-align: center; }
+  .ws-warehouse h2 { font-size: 20px; margin-bottom: 20px; color: #2a2a28; }
+  .ws-warehouse .imgs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .ws-warehouse .imgs img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid #eee; }
+  .ws-en { display: block; }
+  .ws-zh { display: none; }
+  body.lang-zh .ws-en { display: none; }
+  body.lang-zh .ws-zh { display: block; }
+  .lang-toggle {
+    background: #c9a96e;
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  .lang-toggle:hover { background: #b8965a; }
+  @media (max-width: 768px) {
+    .ws-warehouse .imgs { grid-template-columns: repeat(2, 1fr); }
+    .ws-warehouse .imgs img { height: 120px; }
+  }
+</style>
 </head>
 <body>
 
@@ -15,33 +50,149 @@
       <a href="index.html">Home</a>
       <a href="en/index.html">English</a>
       <a href="zh/index.html">中文</a>
-      <a href="about.html">About</a>
       <a href="wholesale.html">Wholesale</a>
+      <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
+      <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">中文</button>
     </nav>
   </div>
 </header>
 
-<section class="container" style="padding:60px 0; max-width:800px;">
-  <h1 style="margin-bottom:24px;">Wholesale & Bulk Orders</h1>
-  <p style="margin-bottom:16px;">We welcome wholesale buyers, importers, and furniture retailers. Mixed-container loads available.</p>
-  <h2 style="margin-top:32px;margin-bottom:16px;">How It Works</h2>
-  <ul class="specs">
-    <li><b>MOQ:</b> No strict minimum — mix and match across all 57+ items</li>
-    <li><b>Pricing:</b> Single piece pricing shown on site. Volume discounts available on request.</li>
-    <li><b>Delivery:</b> FCA Guangzhou Port or EXW Foshan Warehouse. Buyer arranges freight.</li>
-    <li><b>Payment:</b> T/T (preferred) or PayPal</li>
-    <li><b>Lead Time:</b> Items are in stock; loading within 3–7 days after payment</li>
-  </ul>
-  <h2 style="margin-top:32px;margin-bottom:16px;">Contact for Wholesale</h2>
-  <p>Email: <a href="mailto:sales@timehome.top">sales@timehome.top</a></p>
-  <p>WeChat/Phone: +86 18602074495</p>
-  <p style="margin-top:16px;">Send us your target SKUs and quantities — we'll reply with availability and total CBM for container planning.</p>
+<section class="ws-container" style="padding: 40px 20px;">
+
+  <h1 style="font-size: 32px; margin-bottom: 16px;">
+    <span class="ws-en">Wholesale &amp; Bulk Orders</span>
+    <span class="ws-zh">批发与大宗订单</span>
+  </h1>
+
+  <p>
+    <span class="ws-en">We welcome wholesalers, importers, and furniture retailers. Mixed-container shipments are available.</span>
+    <span class="ws-zh">欢迎批发商、进口商、家具零售商咨询，支持混柜出货。</span>
+  </p>
+
+  <div class="ws-section">
+    <h2><span class="ws-en">Terms &amp; Conditions</span><span class="ws-zh">条款与条件</span></h2>
+    <p>
+      <span class="ws-en">Goods are mixed solid-wood clearance stock. Original export outer packaging is aged and dusty; inner packaging and products remain intact. Structural defect rate is below 5%.</span>
+      <span class="ws-zh">货物为混合实木清仓库存，原出口外包装陈旧积尘，内包装及产品完好，结构性瑕疵率低于 5%。</span>
+    </p>
+    <p>
+      <span class="ws-en">Goods are sold on an "as-is, where-is" basis. Cosmetic issues including scratches, fading and worn packaging are not regarded as quality defects. No warranty, returns or claims for cosmetic defects.</span>
+      <span class="ws-zh">按现货现状交付，划痕、褪色、包装老化等外观问题不属于质量问题，无质保，不退货不索赔。</span>
+    </p>
+    <p>
+      <span class="ws-en">Buyer must inspect goods on-site before loading. No cosmetic-related complaints accepted once the container leaves the warehouse. Only structural damage exceeding 5% may be subject to mutual negotiation.</span>
+      <span class="ws-zh">买方务必装柜前现场验货，装柜离仓后不再受理外观异议；仅超 5% 的结构性损坏可协商处理。</span>
+    </p>
+    <p>
+      <span class="ws-en">Stock information is for reference only. Inventory will not be reserved until deposit is received. If certain SKUs become unavailable, replacement of equal-value items or corresponding deduction may be negotiated.</span>
+      <span class="ws-zh">库存仅供参考，未付定金不锁定库存，付定金后预留货品；部分 SKU 缺货可协商换货或扣减货款。</span>
+    </p>
+    <p>
+      <span class="ws-en">Risk of loss or damage transfers to the buyer upon completion of FCA/EXW handover. All costs including ocean freight, insurance, destination-port customs clearance and import duties shall be borne by the buyer. Deposit is non-refundable if the buyer unilaterally cancels the order. Full deposit refunded if we fail to supply ordered goods.</span>
+      <span class="ws-zh">FCA/EXW 交接完成后，货物损毁、灭失风险转移买方；海运、保险、目的港清关、关税及全部物流费用均由买方承担。买方单方取消订单，定金不予退还；我方无法供货则全额退还定金。</span>
+    </p>
+  </div>
+
+  <div class="ws-section">
+    <h2><span class="ws-en">How It Works</span><span class="ws-zh">合作流程</span></h2>
+    <table>
+      <tr>
+        <td><span class="ws-en">MOQ</span><span class="ws-zh">起订量</span></td>
+        <td>
+          <span class="ws-en">Mix-and-match of 50 SKUs or more</span>
+          <span class="ws-zh">可混搭 50 个及以上 SKU 款式采购</span>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="ws-en">Pricing</span><span class="ws-zh">价格</span></td>
+        <td>
+          <span class="ws-en">Website prices apply for minimum 5-piece orders. Volume discounts:</span>
+          <span class="ws-zh">网站显示为 5 件起售价，量大可申请以下折扣：</span>
+          <ul>
+            <li><span class="ws-en">USD 100/unit: ≥ 100 pieces OR one full 40HQ container</span><span class="ws-zh">≥100 件或满装 1 个 40HQ，均价 100 美元/件</span></li>
+            <li><span class="ws-en">USD 70/unit: ≥ 200 pieces OR two full 40HQ containers</span><span class="ws-zh">≥200 件或满装 2 个 40HQ，均价 70 美元/件</span></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="ws-en">Delivery</span><span class="ws-zh">交货方式</span></td>
+        <td>
+          <span class="ws-en">1. FCA Foshan / Guangzhou / Shenzhen Port (Incoterms® 2020). Ocean freight, insurance and all logistics costs excluded.</span>
+          <span class="ws-zh">1. 佛山／广州／深圳港 FCA（Incoterms®2020），不含海运、保险及物流费用</span>
+          <br><br>
+          <span class="ws-en">2. OR EXW Foshan Shunde Warehouse. Buyer arranges all freight.</span>
+          <span class="ws-zh">2. 或佛山顺德仓库 EXW，买方自行安排货运</span>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="ws-en">Payment</span><span class="ws-zh">付款方式</span></td>
+        <td>
+          <span class="ws-en">T/T. 50% deposit to reserve stock. Full 50% balance must be received before goods release and loading.</span>
+          <span class="ws-zh">电汇 T/T。50% 定金锁定库存，50% 余款全款到账方可放货、装柜。</span>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="ws-en">Lead Time</span><span class="ws-zh">交期</span></td>
+        <td>
+          <span class="ws-en">Goods are in stock. Loading completed within 3–7 working days after payment. Timeline is estimated and subject to terminal schedule, on-site inspection and other objective factors. We are not liable for indirect losses caused by delays.</span>
+          <span class="ws-zh">现货，付款后 3–7 个工作日完成装柜。装柜时间为预估，受码头、验货等客观因素影响，我方不承担延期带来的间接损失。</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="ws-section">
+    <h2><span class="ws-en">Contact for Wholesale</span><span class="ws-zh">批发联系渠道</span></h2>
+    <p>
+      <span class="ws-en">Contact: Judy Liang</span>
+      <span class="ws-zh">联系人：Judy Liang</span>
+    </p>
+    <p>
+      <span class="ws-en">Email: sales@timehome.top</span>
+      <span class="ws-zh">邮箱：sales@timehome.top</span>
+    </p>
+    <p>
+      <span class="ws-en">WeChat / Phone: +86 18602074495</span>
+      <span class="ws-zh">微信／电话：+86 18602074495</span>
+    </p>
+    <p style="margin-top: 16px;">
+      <span class="ws-en">Please send your target SKUs and quantities. We will reply with stock availability and total CBM for container planning.</span>
+      <span class="ws-zh">请提供意向 SKU 及采购数量，我们回复库存与总材积 CBM，供您规划柜货。</span>
+    </p>
+  </div>
+
+  <div class="ws-warehouse">
+    <h2><span class="ws-en">Export Carton Storage</span><span class="ws-zh">出口原箱仓储</span></h2>
+    <div class="imgs">
+      <img src="/img/warehouse-1.jpg" alt="Warehouse">
+      <img src="/img/warehouse-2.jpg" alt="Warehouse">
+      <img src="/img/warehouse-3.jpg" alt="Warehouse">
+      <img src="/img/warehouse-4.jpg" alt="Warehouse">
+      <img src="/img/warehouse-5.jpg" alt="Warehouse">
+    </div>
+  </div>
+
 </section>
 
 <footer class="footer">
   <div class="container">
-    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm (Individual Business)</div>
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
   </div>
 </footer>
+
+<script>
+function toggleLang() {
+  var body = document.body;
+  var btn = document.getElementById('lang-btn');
+  var isZh = body.classList.toggle('lang-zh');
+  btn.textContent = isZh ? 'English' : '中文';
+  document.documentElement.lang = isZh ? 'zh-CN' : 'en';
+}
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof updateCartBadge === 'function') updateCartBadge();
+});
+</script>
+<script src="js/cart.js"></script>
 </body>
 </html>
