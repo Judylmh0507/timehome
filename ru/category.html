@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Товары — TIMEHOME Clearance</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
+  .lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
+  .lang-btn:hover { color: #fff; border-color: #fff; }
+  .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
+  .lang-dropdown.open .lang-menu { display: block; }
+  .lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+  .lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="category.html?cat=living">Гостиная</a>
+      <a href="category.html?cat=dining">Столовая</a>
+      <a href="category.html?cat=study">Кабинет</a>
+      <a href="category.html?cat=bedroom">Спальня</a>
+      <a href="../wholesale.html">Опт</a>
+      <a href="../cart.html">Корзина (<span id="cart-badge">0</span>)</a>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <button class="lang-btn" onclick="toggleLangMenu(event)">🌐 Русский ▾</button>
+        <div class="lang-menu">
+          <a href="../en/category.html">English</a>
+          <a href="../zh/category.html">中文</a>
+          <a href="category.html">Русский</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="container" style="padding:40px 0;">
+  <h2 id="cat-title" style="margin-bottom:24px;">Товары</h2>
+  <div id="category-list"></div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
+  </div>
+</footer>
+
+<script src="../js/products.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/render.js"></script>
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+document.addEventListener('DOMContentLoaded', function () {
+  var catNames = { living: 'Гостиная', dining: 'Столовая', study: 'Кабинет', bedroom: 'Спальня' };
+  var cat = new URLSearchParams(location.search).get('cat') || 'living';
+  document.getElementById('cat-title').textContent = catNames[cat] || 'Товары';
+  renderProducts('category-list', cat);
+});
+</script>
+</body>
+</html>
