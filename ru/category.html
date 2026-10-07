@@ -74,6 +74,13 @@ function toggleLangMenu(e) {
 document.addEventListener('click', function () {
   document.getElementById('lang-dropdown').classList.remove('open');
 });
+document.addEventListener('DOMContentLoaded', function () {
+  var catNames = { living: 'Гостиная', dining: 'Столовая', study: 'Кабинет', bedroom: 'Спальня' };
+  var cat = new URLSearchParams(location.search).get('cat') || 'living';
+  var titleEl = document.getElementById('cat-title');
+  if (titleEl) titleEl.textContent = catNames[cat] || 'Товары';
+  renderProducts('category-list', cat);
+});
 </script>
 </body>
 </html>
