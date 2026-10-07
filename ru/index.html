@@ -85,6 +85,8 @@
 <script src="../js/products.js"></script>
 <script src="../js/cart.js"></script>
 <script src="../js/render.js"></script>
+
+
 <script>
 function toggleLangMenu(e) {
   e.stopPropagation();
@@ -92,9 +94,6 @@ function toggleLangMenu(e) {
 }
 document.addEventListener('click', function () {
   document.getElementById('lang-dropdown').classList.remove('open');
-});
-document.addEventListener('DOMContentLoaded', function () {
-  renderProducts('featured', null, true, 8);
 });
 </script>
 </body>

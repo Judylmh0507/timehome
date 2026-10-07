@@ -65,5 +65,15 @@
     <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm (Individual Business)</div>
   </div>
 </footer>
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
 </body>
 </html>

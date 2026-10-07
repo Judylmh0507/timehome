@@ -221,5 +221,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script src="js/cart.js"></script>
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
 </body>
 </html>

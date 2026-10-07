@@ -515,5 +515,15 @@ document.addEventListener('DOMContentLoaded', function () {
   updateCheckoutButton();
 });
 </script>
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
 </body>
 </html>

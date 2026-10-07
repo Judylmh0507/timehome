@@ -204,5 +204,15 @@ function toggleWechat() {
 </script>
 
 <script src="https://trtc.io/knocket-sdk/sdk.js?identifier=e6c8d53ab576c527a2&v=1790482695187" async></script>
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
 </body>
 </html>
