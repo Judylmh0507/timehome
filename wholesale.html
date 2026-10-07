@@ -47,6 +47,15 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yt9ea9nxf1");
 </script>
+<style>
+.lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
+.lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
+.lang-btn:hover { color: #fff; border-color: #fff; }
+.lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
+.lang-dropdown.open .lang-menu { display: block; }
+.lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+</style>
 </head>
 <body>
 
@@ -55,12 +64,18 @@
     <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="en/index.html">English</a>
-      <a href="zh/index.html">中文</a>
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
       <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">中文</button>
-    </nav>
+    <div class="lang-dropdown" id="lang-dropdown">
+        <button class="lang-btn" onclick="toggleLangMenu(event)">🌐 English ▾</button>
+        <div class="lang-menu">
+          <a href="wholesale.html">English</a>
+          <a href="wholesale.html">中文</a>
+          <a href="ru/wholesale.html">Русский</a>
+        </div>
+      </div>
+      </nav>
   </div>
 </header>
 
