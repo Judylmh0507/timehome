@@ -205,6 +205,14 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yt9ea9nxf1");
 </script>
+<style>
+.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
+.lang-switch:hover { color: #fff; border-color: #fff; }
+.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
+.lang-switch:hover .lang-opts { display: block; }
+.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
+</style>
 </head>
 <body>
 
@@ -217,12 +225,13 @@
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
       
-    <div class="lang-dropdown" id="lang-dropdown">
-        <button class="lang-btn" onclick="toggleLangMenu(event)">🌐 English ▾</button>
-        <div class="lang-menu">
-          <a href="en/index.html">English</a>
-          <a href="zh/index.html">中文</a>
-          <a href="ru/index.html">Русский</a>
+    
+      <div class="lang-switch">
+        <span>🌐 English</span>
+        <div class="lang-opts">
+          <a href="/en/index.html">English</a>
+          <a href="/zh/index.html">中文</a>
+          <a href="/ru/index.html">Русский</a>
         </div>
       </div>
       </nav>

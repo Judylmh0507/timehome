@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опт — TIMEHOME Clearance</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
+  .lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
+  .lang-btn:hover { color: #fff; border-color: #fff; }
+  .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
+  .lang-dropdown.open .lang-menu { display: block; }
+  .lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+  .lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+  .ws-section h2 { font-size: 24px; margin-bottom: 16px; }
+  .ws-section h3 { font-size: 18px; margin: 24px 0 12px; }
+  .ws-section p { font-size: 15px; line-height: 1.7; color: #444; margin-bottom: 12px; }
+  .ws-section ul { padding-left: 20px; margin-bottom: 16px; }
+  .ws-section li { font-size: 15px; line-height: 1.8; color: #444; }
+  .ws-section table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .ws-section table td { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; vertical-align: top; }
+  .ws-section table td:first-child { width: 140px; color: #666; font-weight: 600; }
+  .ws-warehouse { margin: 60px 0 40px; text-align: center; }
+  .ws-warehouse .imgs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .ws-warehouse .imgs img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid #eee; }
+</style>
+<style>
+.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
+.lang-switch:hover { color: #fff; border-color: #fff; }
+.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
+.lang-switch:hover .lang-opts { display: block; }
+.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="category.html?cat=living">Гостиная</a>
+      <a href="category.html?cat=dining">Столовая</a>
+      <a href="category.html?cat=study">Кабинет</a>
+      <a href="category.html?cat=bedroom">Спальня</a>
+      <a href="wholesale.html">Опт</a>
+      <a href="../cart.html">Корзина (<span id="cart-badge">0</span>)</a>
+      
+    <div class="lang-switch">
+        <span>🌐 Русский</span>
+        <div class="lang-opts">
+          <a href="/wholesale.html">English</a>
+          <a href="/wholesale.html">中文</a>
+          <a href="/ru/wholesale.html">Русский</a>
+        </div>
+      </div>
+      </nav>
+  </div>
+</header>
+
+<section class="container" style="max-width:900px;padding:40px 20px;">
+  <h1 style="font-size:32px;margin-bottom:16px;">Оптовые и крупные заказы</h1>
+  <p>Мы приветствуем оптовых покупателей, импортёров и мебельных ритейлеров. Возможна сборная загрузка контейнера.</p>
+
+  <div class="ws-section">
+    <h2>Условия</h2>
+    <ul>
+      <li>Товар — смешанные складские остатки из массива. Внешняя экспортная упаковка старая и пыльная; внутренняя упаковка и изделия не повреждены. Доля структурных дефектов ниже 5%.</li>
+      <li>Продажа на условиях «как есть, где есть». Царапины, выцветание и износ упаковки не считаются дефектами качества. Гарантия, возврат и претензии по внешним дефектам не принимаются.</li>
+      <li>Покупатель обязан осмотреть товар на месте до погрузки. После выезда контейнера со склада претензии по внешнему виду не принимаются. Только структурные повреждения свыше 5% могут быть предметом переговоров.</li>
+      <li>Информация о наличии носит справочный характер. Резервирование только после получения депозита. Если отдельные артикулы недоступны, возможна замена на равную стоимость или вычет из платежа.</li>
+      <li>Риск утраты или повреждения переходит к покупателю после передачи FCA/EXW. Все расходы, включая морской фрахт, страхование, таможенную очистку и импортные пошлины, несёт покупатель. Депозит не возвращается при односторонней отмене заказа. Полный возврат депозита, если мы не можем поставить товар.</li>
+    </ul>
+  </div>
+
+  <div class="ws-section">
+    <h2>Как это работает</h2>
+    <table>
+      <tr><td>Минимум</td><td>Сборная комплектация от 50 артикулов</td></tr>
+      <tr><td>Цены</td><td>Цены на сайте — от 5 шт. Оптовые скидки:<br>• $100/шт: ≥ 100 шт или 1 полный 40HQ<br>• $70/шт: ≥ 200 шт или 2 полных 40HQ</td></tr>
+      <tr><td>Доставка</td><td>1. FCA Фошань / Гуанчжоу / Шэньчжэнь (Incoterms® 2020). Без фрахта, страхования и логистики.<br>2. Или EXW склад Фошань Шуньдэ. Покупатель организует доставку.</td></tr>
+      <tr><td>Оплата</td><td>T/T. 50% депозит для резервирования. Остаток 50% до отгрузки и погрузки.</td></tr>
+      <tr><td>Сроки</td><td>Товар в наличии. Погрузка в течение 3–7 рабочих дней после оплаты. Сроки ориентировочные и зависят от терминала, осмотра и других факторов. Мы не несём ответственности за косвенные убытки от задержек.</td></tr>
+    </table>
+  </div>
+
+  <div class="ws-section">
+    <h2>Контакты для опта</h2>
+    <p>Контакт: Judy Liang</p>
+    <p>Email: sales@timehome.top</p>
+    <p>WeChat / Телефон: +86 18602074495</p>
+    <p style="margin-top:16px;">Пришлите целевые артикулы и количество. Мы ответим о наличии и общем объёме CBM для планирования контейнера.</p>
+  </div>
+
+  <div class="ws-warehouse">
+    <h2>Хранение оригинальных экспортных коробок</h2>
+    <div class="imgs">
+      <img src="../img/warehouse-1.jpg" alt="Warehouse">
+      <img src="../img/warehouse-2.jpg" alt="Warehouse">
+      <img src="../img/warehouse-3.jpg" alt="Warehouse">
+      <img src="../img/warehouse-4.jpg" alt="Warehouse">
+      <img src="../img/warehouse-5.jpg" alt="Warehouse">
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
+  </div>
+</footer>
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function () {
+  document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
+</body>
+</html>
