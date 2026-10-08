@@ -22,8 +22,39 @@
 .lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
 .lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
+<style id="sidebar-css">
+.sidebar {
+  position: fixed; left: 0; top: 60px; width: 180px; height: calc(100vh - 60px);
+  background: #f8f5ef; border-right: 1px solid #e8e2d5;
+  padding: 20px 0; overflow-y: auto; z-index: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.sidebar a {
+  display: block; padding: 12px 20px; color: #2a2a28;
+  text-decoration: none; font-size: 14px; border-left: 3px solid transparent;
+  transition: all 0.15s;
+}
+.sidebar a:hover { background: #fff; border-left-color: #c9a96e; color: #c9a96e; }
+.sidebar .sb-divider { height: 1px; background: #e8e2d5; margin: 12px 20px; }
+body { padding-left: 180px; }
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  body { padding-left: 0; }
+}
+</style>
 </head>
 <body>
+<aside class="sidebar">
+  <a href="/ru/index.html">🏠 Главная</a>
+  <a href="/ru/category.html?cat=living">🛋️ Гостиная</a>
+  <a href="/ru/category.html?cat=dining">🍽️ Столовая</a>
+  <a href="/ru/category.html?cat=study">📚 Кабинет</a>
+  <a href="/ru/category.html?cat=bedroom">🛏️ Спальня</a>
+  <div class="sb-divider"></div>
+  <a href="/ru/about.html">ℹ️ О нас</a>
+  <a href="/ru/wholesale.html">📦 Опт</a>
+  <a href="/cart.html">🛒 Корзина</a>
+</aside>
 
 <header class="header">
   <div class="container">
