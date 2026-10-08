@@ -128,7 +128,8 @@ body { padding-left: 180px; }
     +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
     +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
     +     '</div>'
-    +     '<ul class="specs">'
+    +     + '<div style="margin:20px 0;"><button onclick="addToCart(\'' + p.id + '\')" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">加入购物车</button></div>'
+    + '<ul class="specs">'
     +       '<li><b>尺寸：</b>' + p.dimensions + '</li>'
     +       '<li><b>材质：</b>' + p.material + '</li>'
     +       '<li><b>漆面：</b>' + p.finish + '</li>'
