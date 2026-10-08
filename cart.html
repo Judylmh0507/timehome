@@ -341,27 +341,7 @@ body { padding-left: 180px; }
   </div>
 
   <div class="pay-method-box" id="pay-method-box">
-    <div style="margin-top:16px;padding:16px 20px;background:#f0f7ff;border-radius:6px;border-left:4px solid #0a3d62;"><b>Estimate Ocean Freight</b><br><span style="font-size:13px;color:#666;">Not included in the product price. Use SeaRates' public calculator to estimate shipping from China to your port.</span><br><a href="https://www.searates.com/services/calculator" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#0a3d62;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600;">Open SeaRates Calculator ↗</a></div>
-    <button class="pay-btn pay-btn-primary" onclick="togglePayPanel('tt')">
-      Pay by Bank Transfer (T/T) — Wholesale
-      <small>Recommended for bulk orders. Pay in USD via bank wire.</small>
-    </button>
-
-    <div class="pay-panel" id="panel-tt">
-      <h4>Bank Transfer Details (T/T)</h4>
-      <table>
-        <tr><td>Account Holder</td><td>Guangzhou Panyu District Time Home Furnishings Store (Individual Business) <button class="copy-btn" onclick="copyText('Guangzhou Panyu District Time Home Furnishings Store (Individual Business)')">Copy</button></td></tr>
-        <tr><td>Account Number</td><td>342567815 <button class="copy-btn" onclick="copyText('342567815')">Copy</button></td></tr>
-        <tr><td>SWIFT/BIC</td><td>CITIHKHX <button class="copy-btn" onclick="copyText('CITIHKHX')">Copy</button></td></tr>
-        <tr><td>Bank Name</td><td>CITIBANK N.A. HONG KONG BRANCH</td></tr>
-        <tr><td>Bank Address</td><td>Champion Tower, THREE GARDEN ROAD</td></tr>
-        <tr><td>Bank Code</td><td>006</td></tr>
-        <tr><td>Branch Code</td><td>391</td></tr>
-      </table>
-      <div class="note">
-        After transfer, please email the payment receipt to <b>sales@timehome.top</b> with your PI number. We will arrange loading within 48 hours after payment is confirmed.
-      </div>
-    </div>
+    
 
     <button class="pay-btn pay-btn-secondary" onclick="togglePayPanel('pi')">
       Request Proforma Invoice — Sample / Retail
@@ -400,6 +380,13 @@ body { padding-left: 180px; }
   </div>
 
   <div id="paypal-disabled-msg" style="margin-top:12px;color:#c9a96e;font-size:14px;font-weight:600;"></div>
+<div style="margin-top:16px;padding:16px 20px;background:#f0f7ff;border-radius:6px;border-left:4px solid #0a3d62;">
+      <b>Estimate Ocean Freight</b><br>
+      <span style="font-size:13px;color:#666;">Freight is not included. Use the calculator below to compare shipping options from China to your port.</span>
+      <div style="margin-top:12px;">
+        <iframe src="https://www.freightos.com/freight-calculator/?embedded=1" width="100%" height="480" style="border:none;border-radius:6px;" loading="lazy"></iframe>
+      </div>
+    </div>
 </section>
 
 <footer class="footer">
