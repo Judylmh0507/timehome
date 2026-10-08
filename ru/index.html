@@ -6,19 +6,12 @@
 <title>TIMEHOME Clearance — Русский</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  .lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
-  .lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
-  .lang-btn:hover { color: #fff; border-color: #fff; }
-  .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
-  .lang-dropdown.open .lang-menu { display: block; }
-  .lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
-  .lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+
 </style>
 <style>
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
-.lang-switch:hover { color: #fff; border-color: #fff; }
+
 .lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
-.lang-switch:hover .lang-opts { display: block; }
+
 .lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
 .lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
@@ -67,15 +60,7 @@ body { padding-left: 180px; }
       <a href="category.html?cat=bedroom">Спальня</a>
       <a href="../wholesale.html">Опт</a>
       <a href="../cart.html">Корзина (<span id="cart-badge">0</span>)</a>
-      
-    <div class="lang-switch">
-        <span>🌐 Русский</span>
-        <div class="lang-opts">
-          <a href="/en/index.html">English</a>
-          <a href="/zh/index.html">中文</a>
-          <a href="/ru/index.html">Русский</a>
-        </div>
-      </div>
+
       </nav>
   </div>
 </header>
@@ -126,16 +111,6 @@ body { padding-left: 180px; }
 <script src="../js/cart.js"></script>
 <script src="../js/render.js"></script>
 
-
-<script>
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
-document.addEventListener('click', function () {
-  document.getElementById('lang-dropdown').classList.remove('open');
-});
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   renderProducts('featured', null, true, 8);

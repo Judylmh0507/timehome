@@ -57,47 +57,6 @@
   }
   .agree-box input { margin-top: 3px; }
 
-  .lang-btn {
-    background: #c9a96e;
-    color: #fff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 4px;
-    font-size: 13px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .lang-btn:hover { background: #b8965a; }
-  .lang-btn .arrow { font-size: 10px; transition: transform 0.2s; }
-  
-  .lang-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 6px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    min-width: 130px;
-    z-index: 1000;
-    overflow: hidden;
-  }
-  
-  .lang-menu a {
-    display: block;
-    padding: 10px 16px;
-    color: #2a2a28;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
-  .lang-menu a.active { background: #fdf9f3; color: #c9a96e; font-weight: 600; }
-
   /* ===== 支付按钮 ===== */
   .pay-method-box {
     margin: 24px 0;
@@ -533,16 +492,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('click', function () {
   
-});
-</script>
-<script id="lang-click-js">
-document.addEventListener('click', function(e) {
-
-  });
-  if (sw) {
-    e.preventDefault();
-    sw.classList.toggle('open');
-  }
 });
 </script>
 

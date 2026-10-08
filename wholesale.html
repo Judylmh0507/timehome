@@ -24,17 +24,7 @@
   .ws-zh { display: none; }
   body.lang-zh .ws-en { display: none; }
   body.lang-zh .ws-zh { display: block; }
-  .lang-toggle {
-    background: #c9a96e;
-    color: #fff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 4px;
-    font-size: 13px;
-    cursor: pointer;
-    margin-left: 20px;
-  }
-  .lang-toggle:hover { background: #b8965a; }
+
   @media (max-width: 768px) {
     .ws-warehouse .imgs { grid-template-columns: repeat(2, 1fr); }
     .ws-warehouse .imgs img { height: 120px; }
@@ -48,19 +38,12 @@
     })(window, document, "clarity", "script", "yt9ea9nxf1");
 </script>
 <style>
-.lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
-.lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
-.lang-btn:hover { color: #fff; border-color: #fff; }
-.lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
-.lang-dropdown.open .lang-menu { display: block; }
-.lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
-.lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+
 </style>
 <style>
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
-.lang-switch:hover { color: #fff; border-color: #fff; }
+
 .lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
-.lang-switch:hover .lang-opts { display: block; }
+
 .lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
 .lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
@@ -105,16 +88,7 @@ body { padding-left: 180px; }
       <a href="index.html">Home</a>
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
-      
-    
-      <div class="lang-switch">
-        <span>🌐 English</span>
-        <div class="lang-opts">
-          <a href="/wholesale.html">English</a>
-          <a href="/zh/wholesale.html">中文</a>
-          <a href="/ru/wholesale.html">Русский</a>
-        </div>
-      </div>
+
       </nav>
   </div>
 </header>
@@ -207,8 +181,6 @@ body { padding-left: 180px; }
           <span class="ws-zh">现货，付款后 3–7 个工作日完成装柜。装柜时间为预估，受码头、验货等客观因素影响，我方不承担延期带来的间接损失。</span>
         </td>
       </tr>
-    
-
 
 <div style="margin-top:16px;padding:16px 20px;background:#f0f7ff;border-radius:6px;border-left:4px solid #0a3d62;">
       <b>Estimate Ocean Freight</b><br>
@@ -238,14 +210,5 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="js/cart.js"></script>
 
-<script>
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
-document.addEventListener('click', function () {
-  document.getElementById('lang-dropdown').classList.remove('open');
-});
-</script>
 </body>
 </html>

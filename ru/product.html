@@ -6,19 +6,12 @@
 <title>Товар — TIMEHOME Clearance</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
-  .lang-dropdown { position: relative; display: inline-block; margin-left: 20px; }
-  .lang-btn { background: transparent; color: #ccc; border: 1px solid #555; padding: 6px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; }
-  .lang-btn:hover { color: #fff; border-color: #fff; }
-  .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 1000; }
-  .lang-dropdown.open .lang-menu { display: block; }
-  .lang-menu a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
-  .lang-menu a:hover { background: #f8f5ef; color: #c9a96e; }
+
 </style>
 <style>
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
-.lang-switch:hover { color: #fff; border-color: #fff; }
+
 .lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
-.lang-switch:hover .lang-opts { display: block; }
+
 .lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
 .lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
@@ -67,15 +60,7 @@ body { padding-left: 180px; }
       <a href="category.html?cat=bedroom">Спальня</a>
       <a href="../wholesale.html">Опт</a>
       <a href="../cart.html">Корзина (<span id="cart-badge">0</span>)</a>
-      
-    <div class="lang-switch">
-        <span>🌐 Русский</span>
-        <div class="lang-opts">
-          <a href="/en/product.html">English</a>
-          <a href="/zh/product.html">中文</a>
-          <a href="/ru/product.html">Русский</a>
-        </div>
-      </div>
+
       </nav>
   </div>
 </header>
@@ -95,83 +80,5 @@ body { padding-left: 180px; }
 <script src="../js/cart.js"></script>
 <script src="../js/render.js"></script>
 
-
-<script>
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
-document.addEventListener('click', function () {
-  document.getElementById('lang-dropdown').classList.remove('open');
-});
-
-(function () {
-  var id = new URLSearchParams(location.search).get('id');
-  var box = document.getElementById('product-detail');
-  if (!id) { box.innerHTML = '<p>Отсутствует ID товара.</p>'; return; }
-
-  var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
-  if (!p) { box.innerHTML = '<p>Товар не найден.</p>'; return; }
-
-  document.title = p.name + ' — TIMEHOME Clearance';
-
-  var imgs = p.images.map(function (f, i) {
-    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
-         + 'class="detail-img" data-idx="' + i + '" '
-         + 'style="width:100%;border-radius:8px;border:1px solid #ece5d8;' + (i===0?'':'display:none;') + '">';
-  }).join('');
-
-  var thumbs = p.images.map(function (f, i) {
-    return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
-         + 'class="thumb" '
-         + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
-  }).join('');
-
-  var saveBadge = '';
-  if (p.originalPrice && p.originalPrice > p.price) {
-    var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Скидка ' + pct + '%</span>';
-  }
-
-  box.innerHTML = ''
-    + '<div class="product-detail">'
-    +   '<div class="main-img">'
-    +     '<div id="main-img-box">' + imgs + '</div>'
-    +     '<div class="thumbs" id="thumbs">' + thumbs + '</div>'
-    +   '</div>'
-    +   '<div>'
-    +     '<h1 style="margin-top:0;">' + p.name + '</h1>'
-    +     '<p style="color:#888;">Артикул: ' + p.id.toUpperCase() + '</p>'
-    +     saveBadge
-    +     '<div style="margin:20px 0;font-size:24px;">'
-    +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
-    +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
-    +     '</div>'
-    +     '<ul class="specs">'
-    +       '<li><b>Размеры:</b> ' + p.dimensions + '</li>'
-    +       '<li><b>Материал:</b> ' + p.material + '</li>'
-    +       '<li><b>Отделка:</b> ' + p.finish + '</li>'
-    +       '<li><b>Вес нетто:</b> ' + p.weight + '</li>'
-    +       '<li><b>Вес брутто:</b> ' + p.grossWeight + '</li>'
-    +       '<li><b>Упаковка:</b> ' + p.packagingVolume + '</li>'
-    +       '<li><b>В наличии:</b> ' + p.stock + ' шт.</li>'
-    +     '</ul>'
-    +     '<div class="condition-note">' + p.condition + '</div>'
-    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← Вернуться к списку</a>'
-    +   '</div>'
-    + '</div>';
-
-  var mainImgs = box.querySelectorAll('.detail-img');
-  var thumbEls = box.querySelectorAll('.thumb');
-  thumbEls.forEach(function (t) {
-    t.addEventListener('click', function () {
-      var idx = parseInt(t.getAttribute('data-idx'), 10);
-      mainImgs.forEach(function (m, i) { m.style.display = (i === idx ? 'block' : 'none'); });
-      thumbEls.forEach(function (x) { x.style.borderColor = '#ddd'; });
-      t.style.borderColor = '#c9a96e';
-    });
-  });
-})();
-</script>
 </body>
 </html>
