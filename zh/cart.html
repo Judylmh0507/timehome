@@ -257,8 +257,9 @@ body { padding-left: 180px; }
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">购物车 (<span id="cart-badge">0</span>)</a>
 
-      <div class="lang-switch">
-        <span>🌐 中文</span>
+      
+      <div class="lang-switch" onclick="toggleLangMenu(event)">
+        <span>🌐 中文 ▾</span>
         <div class="lang-opts">
           <a href="/cart.html">English</a>
           <a href="/zh/cart.html">中文</a>
@@ -555,6 +556,22 @@ document.addEventListener('click', function(e) {
     e.preventDefault();
     sw.classList.toggle('open');
   }
+});
+</script>
+<script>
+function toggleLangMenu(e) {
+  if (e.target.tagName === 'A') return;
+  e.stopPropagation();
+  var sw = e.currentTarget;
+  document.querySelectorAll('.lang-switch').forEach(function(el) {
+    if (el !== sw) el.classList.remove('open');
+  });
+  sw.classList.toggle('open');
+}
+document.addEventListener('click', function() {
+  document.querySelectorAll('.lang-switch').forEach(function(el) {
+    el.classList.remove('open');
+  });
 });
 </script>
 </body>
