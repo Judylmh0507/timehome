@@ -239,5 +239,17 @@ function toggleWechat() {
 
 <script src="https://trtc.io/knocket-sdk/sdk.js?identifier=e6c8d53ab576c527a2&v=1790482695187" async></script>
 
+<script>
+(function() {
+  var pid = new URLSearchParams(location.search).get('id');
+  if (!pid) return;
+  document.querySelectorAll('.lang-flat a').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && href.indexOf('product.html') !== -1 && href.indexOf('id=') === -1) {
+      a.setAttribute('href', href + '?id=' + pid);
+    }
+  });
+})();
+</script>
 </body>
 </html>
