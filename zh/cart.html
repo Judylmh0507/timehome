@@ -226,11 +226,13 @@ body { padding-left: 180px; }
   body { padding-left: 0; }
 }
 </style>
-<style id="lang-click-css">
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; user-select: none; }
-.lang-switch:hover { color: #fff; border-color: #fff; }
-.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
-.lang-switch.open .lang-opts { display: block; }
+
+<style>
+.lang-switch { position: relative; display: inline-block; margin-left: 20px; }
+.lang-switch > summary { list-style: none; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; user-select: none; }
+.lang-switch > summary::-webkit-details-marker { display: none; }
+.lang-switch[open] > summary { color: #fff; border-color: #fff; }
+.lang-opts { position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; padding: 4px 0; }
 .lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
 .lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
@@ -258,14 +260,15 @@ body { padding-left: 180px; }
       <a href="cart.html">购物车 (<span id="cart-badge">0</span>)</a>
 
       
-      <div class="lang-switch" onclick="toggleLangMenu(event)">
-        <span>🌐 中文 ▾</span>
+      
+      <details class="lang-switch">
+        <summary>🌐 中文 ▾</summary>
         <div class="lang-opts">
           <a href="/cart.html">English</a>
           <a href="/zh/cart.html">中文</a>
           <a href="/ru/cart.html">Русский</a>
         </div>
-      </div>
+      </details>
       </nav>
   </div>
 </header>
@@ -559,27 +562,6 @@ document.addEventListener('click', function(e) {
 });
 </script>
 
-<script>
-function toggleLangMenu(e) {
-  // 点的是链接，正常跳转，不阻止
-  if (e.target.tagName === 'A' || e.target.closest('a')) {
-    return;
-  }
-  e.stopPropagation();
-  var sw = e.currentTarget;
-  document.querySelectorAll('.lang-switch').forEach(function(el) {
-    if (el !== sw) el.classList.remove('open');
-  });
-  sw.classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  // 点击空白处关闭菜单
-  if (!e.target.closest('.lang-switch')) {
-    document.querySelectorAll('.lang-switch').forEach(function(el) {
-      el.classList.remove('open');
-    });
-  }
-});
-</script>
+
 </body>
 </html>
