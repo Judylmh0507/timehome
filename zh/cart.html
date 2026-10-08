@@ -205,14 +205,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yt9ea9nxf1");
 </script>
-<style>
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
-.lang-switch:hover { color: #fff; border-color: #fff; }
-.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
-.lang-switch:hover .lang-opts { display: block; }
-.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
-.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
-</style>
+
 <style id="sidebar-css">
 .sidebar {
   position: fixed; left: 0; top: 60px; width: 180px; height: calc(100vh - 60px);
@@ -232,6 +225,14 @@ body { padding-left: 180px; }
   .sidebar { display: none; }
   body { padding-left: 0; }
 }
+</style>
+<style id="lang-click-css">
+.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; user-select: none; }
+.lang-switch:hover { color: #fff; border-color: #fff; }
+.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
+.lang-switch.open .lang-opts { display: block; }
+.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
 </style>
 </head>
 <body>
@@ -550,6 +551,18 @@ function toggleLangMenu(e) {
 }
 document.addEventListener('click', function () {
   document.getElementById('lang-dropdown').classList.remove('open');
+});
+</script>
+<script id="lang-click-js">
+document.addEventListener('click', function(e) {
+  var sw = e.target.closest('.lang-switch');
+  document.querySelectorAll('.lang-switch').forEach(function(el) {
+    if (el !== sw) el.classList.remove('open');
+  });
+  if (sw) {
+    e.preventDefault();
+    sw.classList.toggle('open');
+  }
 });
 </script>
 </body>
