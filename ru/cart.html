@@ -57,11 +57,6 @@
   }
   .agree-box input { margin-top: 3px; }
 
-  .lang-dropdown {
-    position: relative;
-    display: inline-block;
-    margin-left: 10px;
-  }
   .lang-btn {
     background: #c9a96e;
     color: #fff;
@@ -76,7 +71,7 @@
   }
   .lang-btn:hover { background: #b8965a; }
   .lang-btn .arrow { font-size: 10px; transition: transform 0.2s; }
-  .lang-dropdown.open .lang-btn .arrow { transform: rotate(180deg); }
+  
   .lang-menu {
     display: none;
     position: absolute;
@@ -91,7 +86,7 @@
     z-index: 1000;
     overflow: hidden;
   }
-  .lang-dropdown.open .lang-menu { display: block; }
+  
   .lang-menu a {
     display: block;
     padding: 10px 16px;
@@ -228,13 +223,9 @@ body { padding-left: 180px; }
 </style>
 
 <style>
-.lang-switch { position: relative; display: inline-block; margin-left: 20px; }
-.lang-switch > summary { list-style: none; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; user-select: none; }
-.lang-switch > summary::-webkit-details-marker { display: none; }
-.lang-switch[open] > summary { color: #fff; border-color: #fff; }
-.lang-opts { position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; padding: 4px 0; }
-.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
-.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
+.lang-flat { margin-left: 16px; }
+.lang-flat a { color: #ccc; text-decoration: none; font-size: 13px; padding: 4px 8px; margin-left: 4px; }
+.lang-flat a:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -259,16 +250,11 @@ body { padding-left: 180px; }
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">Корзина (<span id="cart-badge">0</span>)</a>
 
-      
-      
-      <details class="lang-switch">
-        <summary>🌐 Русский ▾</summary>
-        <div class="lang-opts">
-          <a href="/cart.html">English</a>
-          <a href="/zh/cart.html">中文</a>
-          <a href="/ru/cart.html">Русский</a>
-        </div>
-      </details>
+      <span class="lang-flat">
+        <a href="/cart.html">English</a>
+        <a href="/zh/cart.html">中文</a>
+        <a href="/ru/cart.html">Русский</a>
+      </span>
       </nav>
   </div>
 </header>
@@ -551,9 +537,7 @@ document.addEventListener('click', function () {
 </script>
 <script id="lang-click-js">
 document.addEventListener('click', function(e) {
-  var sw = e.target.closest('.lang-switch');
-  document.querySelectorAll('.lang-switch').forEach(function(el) {
-    if (el !== sw) el.classList.remove('open');
+
   });
   if (sw) {
     e.preventDefault();
@@ -561,7 +545,6 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
-
 
 </body>
 </html>
