@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Товар — TIMEHOME Clearance</title>
 <link rel="stylesheet" href="../css/style.css">
+<style id="knocket-force-show">#knocket-container, .knocket-container, [id*="knocket"], [class*="knocket"] { opacity: 1 !important; visibility: visible !important; transform: none !important; transition: none !important; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yt9ea9nxf1");
+</script>
 <style>
 
 </style>
@@ -39,28 +47,26 @@ body { padding-left: 180px; }
 </head>
 <body>
 <aside class="sidebar">
-  <a href="/ru/index.html">🏠 Главная</a>
-  <a href="/ru/category.html?cat=living">🛋️ Гостиная</a>
-  <a href="/ru/category.html?cat=dining">🍽️ Столовая</a>
-  <a href="/ru/category.html?cat=study">📚 Кабинет</a>
-  <a href="/ru/category.html?cat=bedroom">🛏️ Спальня</a>
+  <a href="/zh/index.html">🏠 首页</a>
+  <a href="/zh/category.html?cat=living">🛋️ 客厅</a>
+  <a href="/zh/category.html?cat=dining">🍽️ 餐厅</a>
+  <a href="/zh/category.html?cat=study">📚 书房 / 办公</a>
+  <a href="/zh/category.html?cat=bedroom">🛏️ 卧室</a>
   <div class="sb-divider"></div>
-  <a href="/ru/about.html">ℹ️ О нас</a>
-  <a href="/ru/wholesale.html">📦 Опт</a>
-  <a href="/cart.html">🛒 Корзина</a>
+  <a href="/zh/about.html">ℹ️ 关于我们</a>
+  <a href="/wholesale.html">📦 批发</a>
+  <a href="/cart.html">🛒 购物车</a>
 </aside>
 
 <header class="header">
   <div class="container">
-    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <div class="logo"><a href="index.html">TIMEHOME 清仓</a></div>
     <nav class="nav">
       <a href="index.html">Главная</a>
       <a href="category.html?cat=living">Гостиная</a>
       <a href="category.html?cat=dining">Столовая</a>
       <a href="category.html?cat=study">Кабинет</a>
       <a href="category.html?cat=bedroom">Спальня</a>
-      <a href="../wholesale.html">Опт</a>
-      <a href="../cart.html">Корзина (<span id="cart-badge">0</span>)</a>
 
       <span class="lang-flat"><a href="/en/product.html">English</a><a href="/zh/product.html">中文</a><a href="/ru/product.html">Русский</a></span>
       </nav>
@@ -73,14 +79,155 @@ body { padding-left: 180px; }
 
 <footer class="footer">
   <div class="container">
-    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495</div>
+    <div><b>TIMEHOME 清仓</b> — 广州市番禺区时光家居商行（个体工商户）</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495 | 仓库：佛山顺德</div>
   </div>
 </footer>
 
-<script src="../js/products.js"></script>
-<script src="../js/cart.js"></script>
-<script src="../js/render.js"></script>
+<script src="../js/products.js?v=2"></script>
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get('id');
+  var box = document.getElementById('product-detail');
+  if (!id) { box.innerHTML = '<p>缺少产品 ID。</p>'; return; }
+
+  var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
+  if (!p) { box.innerHTML = '<p>未找到该产品。</p>'; return; }
+
+  document.title = p.name + ' — TIMEHOME 清仓';
+
+  var imgs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
+         + 'class="detail-img" data-idx="' + i + '" '
+         + 'style="width:100%;border-radius:8px;border:1px solid #ece5d8;' + (i===0?'':'display:none;') + '">';
+  }).join('');
+
+  var thumbs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
+         + 'class="thumb" '
+         + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
+  }).join('');
+
+  var saveBadge = '';
+  if (p.originalPrice && p.originalPrice > p.price) {
+    var pct = Math.round((1 - p.price / p.originalPrice) * 100);
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">节省 ' + pct + '%</span>';
+  }
+
+  box.innerHTML = ''
+    + '<div class="product-detail">'
+    +   '<div class="main-img">'
+    +     '<div id="main-img-box">' + imgs + '</div>'
+    +     '<div class="thumbs" id="thumbs">' + thumbs + '</div>'
+    +   '</div>'
+    +   '<div>'
+    +     '<h1 style="margin-top:0;">' + p.name + '</h1>'
+    +     '<p style="color:#888;">SKU: ' + p.id.toUpperCase() + '</p>'
+    +     saveBadge
+    +     '<div style="margin:20px 0;font-size:24px;">'
+    +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
+    +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
+    +     '</div>'
+    +     '<ul class="specs">'
+    +       '<li><b>Размеры:</b>' + p.dimensions + '</li>'
+    +       '<li><b>Материал:</b>' + p.material + '</li>'
+    +       '<li><b>Отделка:</b>' + p.finish + '</li>'
+    +       '<li><b>Вес нетто:</b>' + p.weight + '</li>'
+      + '<li><b>Вес брутто:</b>' + p.grossWeight + '</li>'
+    +       '<li><b>Упаковка:</b>' + p.packagingVolume + '</li>'
+    +       '<li><b>В наличии:</b>' + p.stock + ' шт.</li>'
+    +     '</ul>'
+    +     '<div class="condition-note">' + p.condition + '</div>'
+    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← 返回列表</a>'
+    +   '</div>'
+    + '</div>';
+
+  var mainImgs = box.querySelectorAll('.detail-img');
+  var thumbEls = box.querySelectorAll('.thumb');
+  thumbEls.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var idx = parseInt(t.getAttribute('data-idx'), 10);
+      mainImgs.forEach(function (m, i) { m.style.display = (i === idx ? 'block' : 'none'); });
+      thumbEls.forEach(function (x) { x.style.borderColor = '#ddd'; });
+      t.style.borderColor = '#c9a96e';
+    });
+  });
+})();
+</script>
+
+<style id="wechat-widget-style">
+.wechat-widget {
+  position: fixed;
+  right: 88px;
+  bottom: 20px;
+  z-index: 9998;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wechat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #07c160;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wechat-toggle:hover { background: #06ad56; }
+.wechat-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 240px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  padding: 20px;
+  text-align: center;
+}
+.wechat-panel.open { display: block; }
+.wechat-panel h4 { margin: 0 0 12px; font-size: 15px; color: #2a2a28; }
+.wechat-panel img { width: 100%; max-width: 200px; border-radius: 6px; }
+.wechat-panel p { font-size: 13px; color: #666; margin: 10px 0 0; }
+.wechat-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+ (max-width: 768px) {
+  .wechat-widget { right: 82px; bottom: 16px; }
+  .wechat-toggle { width: 48px; height: 48px; }
+}
+</style>
+
+<!-- 微信浮窗 -->
+<div class="wechat-widget" id="wechat-widget">
+  <div class="wechat-panel" id="wechat-panel">
+    <button class="wechat-close" onclick="toggleWechat()">×</button>
+    <h4 id="wechat-title">联系微信</h4>
+    <img src="/img/wechat-qr.png" alt="WeChat QR">
+    <p id="wechat-desc">微信：18602074495</p>
+  </div>
+  <button class="wechat-toggle" onclick="toggleWechat()">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8.5 4C4.9 4 2 6.5 2 9.5c0 1.7.9 3.2 2.3 4.2l-.6 2.1 2.4-1.2c.7.2 1.5.4 2.4.4h.5c-.1-.4-.2-.8-.2-1.2 0-3.3 3.1-5.9 7-5.9h.4C15.7 5.6 12.5 4 8.5 4zm-2.3 3.7c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zm4.6 0c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zM22 13.9c0-2.5-2.4-4.5-5.4-4.5s-5.4 2-5.4 4.5 2.4 4.5 5.4 4.5c.6 0 1.2-.1 1.8-.3l1.9 1-.5-1.7c1.4-.8 2.2-2.1 2.2-3.5zm-7.2-1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7zm3.6 0c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/></svg>
+  </button>
+</div>
+
+<script>
+function toggleWechat() {
+  document.getElementById("wechat-panel").classList.toggle("open");
+}
+</script>
+
+<script src="https://trtc.io/knocket-sdk/sdk.js?identifier=e6c8d53ab576c527a2&v=1790482695187" async></script>
 
 </body>
 </html>
