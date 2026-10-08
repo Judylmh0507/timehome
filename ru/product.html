@@ -57,7 +57,7 @@ body { padding-left: 180px; }
 
 <header class="header">
   <div class="container">
-    <div class="logo"><a href="index.html">TIMEHOME 清仓</a></div>
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
     <nav class="nav">
       <a href="index.html">Главная</a>
       <a href="category.html?cat=living">Гостиная</a>
@@ -76,8 +76,8 @@ body { padding-left: 180px; }
 
 <footer class="footer">
   <div class="container">
-    <div><b>TIMEHOME 清仓</b> — 广州市番禺区时光家居商行（个体工商户）</div>
-    <div style="margin-top:8px;font-size:14px;color:#888;">邮箱：sales@timehome.top | 微信/电话：18602074495 | 仓库：佛山顺德</div>
+    <div><b>TIMEHOME Clearance</b> — 广州市番禺区时光家居商行（个体工商户）</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email：sales@timehome.top | WeChat/Phone：18602074495 | Склад：佛山顺德</div>
   </div>
 </footer>
 
@@ -91,7 +91,7 @@ body { padding-left: 180px; }
   var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
   if (!p) { box.innerHTML = '<p>未找到该产品。</p>'; return; }
 
-  document.title = p.name + ' — TIMEHOME 清仓';
+  document.title = p.name + ' — TIMEHOME Clearance';
 
   var imgs = p.images.map(function (f, i) {
     return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
@@ -108,7 +108,7 @@ body { padding-left: 180px; }
   var saveBadge = '';
   if (p.originalPrice && p.originalPrice > p.price) {
     var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">节省 ' + pct + '%</span>';
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Скидка ' + pct + '%</span>';
   }
 
   box.innerHTML = ''
@@ -135,7 +135,7 @@ body { padding-left: 180px; }
     +       '<li><b>В наличии:</b>' + p.stock + ' шт.</li>'
     +     '</ul>'
     +     '<div class="condition-note">' + p.condition + '</div>'
-    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← 返回列表</a>'
+    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← Вернуться к списку</a>'
     +   '</div>'
     + '</div>';
 
