@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>批发与大宗订单 — TIMEHOME 清仓</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.lang-switch { position: relative; display: inline-block; margin-left: 20px; color: #ccc; font-size: 13px; padding: 6px 14px; border: 1px solid #555; border-radius: 4px; cursor: pointer; }
+.lang-switch:hover { color: #fff; border-color: #fff; }
+.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
+.lang-switch:hover .lang-opts { display: block; }
+.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
+.sidebar { position: fixed; left: 0; top: 60px; width: 180px; height: calc(100vh - 60px); background: #f8f5ef; border-right: 1px solid #e8e2d5; padding: 20px 0; overflow-y: auto; z-index: 500; }
+.sidebar a { display: block; padding: 12px 20px; color: #2a2a28; text-decoration: none; font-size: 14px; border-left: 3px solid transparent; }
+.sidebar a:hover { background: #fff; border-left-color: #c9a96e; color: #c9a96e; }
+.sidebar .sb-divider { height: 1px; background: #e8e2d5; margin: 12px 20px; }
+body { padding-left: 180px; }
+@media (max-width: 768px) { .sidebar { display: none; } body { padding-left: 0; } }
+.ws-section h2 { font-size: 24px; margin-bottom: 16px; }
+.ws-section p, .ws-section li { font-size: 15px; line-height: 1.7; color: #444; }
+.ws-section ul { padding-left: 20px; margin-bottom: 16px; }
+.ws-section table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.ws-section table td { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; vertical-align: top; }
+.ws-section table td:first-child { width: 140px; color: #666; font-weight: 600; }
+.ws-warehouse { margin: 60px 0 40px; text-align: center; }
+.ws-warehouse .imgs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.ws-warehouse .imgs img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid #eee; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a href="/zh/index.html">🏠 首页</a>
+  <a href="/zh/category.html?cat=living">🛋️ 客厅</a>
+  <a href="/zh/category.html?cat=dining">🍽️ 餐厅</a>
+  <a href="/zh/category.html?cat=study">📚 书房 / 办公</a>
+  <a href="/zh/category.html?cat=bedroom">🛏️ 卧室</a>
+  <div class="sb-divider"></div>
+  <a href="/zh/about.html">ℹ️ 关于我们</a>
+  <a href="/zh/wholesale.html">📦 批发</a>
+  <a href="/cart.html">🛒 购物车</a>
+</aside>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME 清仓</a></div>
+    <nav class="nav">
+      <a href="index.html">首页</a>
+      <a href="wholesale.html">批发</a>
+      <a href="../cart.html">购物车 (0)</a>
+      <div class="lang-switch">
+        <span>🌐 中文</span>
+        <div class="lang-opts">
+          <a href="/wholesale.html">English</a>
+          <a href="/zh/wholesale.html">中文</a>
+          <a href="/ru/wholesale.html">Русский</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="container" style="max-width:900px;padding:40px 20px;">
+  <h1 style="font-size:32px;margin-bottom:16px;">批发与大宗订单</h1>
+  <p>欢迎批发商、进口商、家具零售商咨询，支持混柜出货。</p>
+
+  <div class="ws-section">
+    <h2>条款与条件</h2>
+    <ul>
+      <li>货物为混合实木清仓库存，原出口外包装陈旧积尘，内包装及产品完好，结构性瑕疵率低于 5%。</li>
+      <li>按现货现状交付，划痕、褪色、包装老化等外观问题不属于质量问题，无质保，不退货不索赔。</li>
+      <li>买方务必装柜前现场验货，装柜离仓后不再受理外观异议；仅超 5% 的结构性损坏可协商处理。</li>
+      <li>库存仅供参考，未付定金不锁定库存，付定金后预留货品；部分 SKU 缺货可协商换货或扣减货款。</li>
+      <li>FCA/EXW 交接完成后，货物损毁、灭失风险转移买方；海运、保险、目的港清关、关税及全部物流费用均由买方承担。买方单方取消订单，定金不予退还；我方无法供货则全额退还定金。</li>
+    </ul>
+  </div>
+
+  <div class="ws-section">
+    <h2>合作流程</h2>
+    <table>
+      <tr><td>起订量</td><td>可混搭 50 个及以上 SKU 款式采购</td></tr>
+      <tr><td>价格</td><td>网站显示为 5 件起售价，量大可申请以下折扣：<br>• ≥100 件或满装 1 个 40HQ，均价 100 美元/件<br>• ≥200 件或满装 2 个 40HQ，均价 70 美元/件<br><div style="margin-top:8px;font-size:13px;color:#888;font-style:italic;">本网站所有价格以美元计价。应客户需求，也可提供人民币报价。</div></td></tr>
+      <tr><td>交货方式</td><td>1. 佛山／广州／深圳港 FCA（Incoterms®2020），不含海运、保险及物流费用<br><br>2. 或佛山顺德仓库 EXW，买方自行安排货运</td></tr>
+      <tr><td>付款方式</td><td>电汇 T/T。50% 定金锁定库存，50% 余款全款到账方可放货、装柜。</td></tr>
+      <tr><td>交期</td><td>现货，付款后 3–7 个工作日完成装柜。装柜时间为预估，受码头、验货等客观因素影响，我方不承担延期带来的间接损失。</td></tr>
+    </table>
+  </div>
+
+  <div class="ws-section">
+    <h2>批发联系渠道</h2>
+    <p>联系人：Judy Liang</p>
+    <p>邮箱：sales@timehome.top</p>
+    <p>微信／电话：+86 18602074495</p>
+    <p style="margin-top:16px;">请提供意向 SKU 及采购数量，我们回复库存与总材积 CBM，供您规划柜货。</p>
+  </div>
+
+  <div class="ws-warehouse">
+    <h2>出口原箱仓储</h2>
+    <div class="imgs">
+      <img src="../img/warehouse-1.jpg" alt="Warehouse">
+      <img src="../img/warehouse-2.jpg" alt="Warehouse">
+      <img src="../img/warehouse-3.jpg" alt="Warehouse">
+      <img src="../img/warehouse-4.jpg" alt="Warehouse">
+      <img src="../img/warehouse-5.jpg" alt="Warehouse">
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME 清仓</b> — 广州市番禺区时光家居商行（个体工商户）</div>
+  </div>
+</footer>
+</body>
+</html>
