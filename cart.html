@@ -558,9 +558,13 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
+
 <script>
 function toggleLangMenu(e) {
-  if (e.target.tagName === 'A') return;
+  // 点的是链接，正常跳转，不阻止
+  if (e.target.tagName === 'A' || e.target.closest('a')) {
+    return;
+  }
   e.stopPropagation();
   var sw = e.currentTarget;
   document.querySelectorAll('.lang-switch').forEach(function(el) {
@@ -568,10 +572,13 @@ function toggleLangMenu(e) {
   });
   sw.classList.toggle('open');
 }
-document.addEventListener('click', function() {
-  document.querySelectorAll('.lang-switch').forEach(function(el) {
-    el.classList.remove('open');
-  });
+document.addEventListener('click', function(e) {
+  // 点击空白处关闭菜单
+  if (!e.target.closest('.lang-switch')) {
+    document.querySelectorAll('.lang-switch').forEach(function(el) {
+      el.classList.remove('open');
+    });
+  }
 });
 </script>
 </body>
