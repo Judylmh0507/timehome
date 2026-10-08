@@ -256,8 +256,7 @@ body { padding-left: 180px; }
       <a href="about.html">About</a>
       <a href="wholesale.html">Wholesale</a>
       <a href="cart.html">Cart (<span id="cart-badge">0</span>)</a>
-      
-    
+
       <div class="lang-switch">
         <span>🌐 English</span>
         <div class="lang-opts">
@@ -342,7 +341,6 @@ body { padding-left: 180px; }
   </div>
 
   <div class="pay-method-box" id="pay-method-box">
-    
 
     <button class="pay-btn pay-btn-secondary" onclick="togglePayPanel('pi')">
       Request Proforma Invoice — Sample / Retail
@@ -400,12 +398,9 @@ body { padding-left: 180px; }
 <script src="js/cart.js"></script>
 <script>
 // ===== 中英文下拉菜单 =====
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
+
 function setLang(lang) {
-  document.getElementById('lang-dropdown').classList.remove('open');
+  
   var body = document.body;
   var isZh = (lang === 'zh');
   body.classList.toggle('lang-zh', isZh);
@@ -431,7 +426,7 @@ function setLang(lang) {
   updateCheckoutButton();
 }
 document.addEventListener('click', function () {
-  document.getElementById('lang-dropdown').classList.remove('open');
+  
 });
 
 // ===== 提货方式 =====
@@ -545,12 +540,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
+
 document.addEventListener('click', function () {
-  document.getElementById('lang-dropdown').classList.remove('open');
+  
 });
 </script>
 <script id="lang-click-js">
