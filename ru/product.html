@@ -51,7 +51,7 @@ body { padding-left: 180px; }
   <a href="/ru/category.html?cat=bedroom">🛏️ Спальня</a>
   <div class="sb-divider"></div>
   <a href="/ru/about.html">ℹ️ О нас</a>
-  <a href="/wholesale.html">📦 批发</a>
+  <a href="/wholesale.html">📦 Оптом</a>
   <a href="/ru/cart.html">🛒 Корзина</a>
 </aside>
 
@@ -125,6 +125,7 @@ body { padding-left: 180px; }
     +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
     +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
     +     '</div>'
+    +     '<div style="margin:20px 0;"><button class="btn-add-cart" data-id="' + p.id + '" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Добавить в корзину</button></div>'
     +     '<ul class="specs">'
     +       '<li><b>Размеры:</b>' + p.dimensions + '</li>'
     +       '<li><b>Материал:</b>' + p.material + '</li>'
@@ -149,6 +150,17 @@ body { padding-left: 180px; }
       t.style.borderColor = '#c9a96e';
     });
   });
+
+  var btnAdd = box.querySelector('.btn-add-cart');
+  if (btnAdd) {
+    btnAdd.addEventListener('click', function () {
+      if (typeof addToCart === 'function') {
+        addToCart(btnAdd.getAttribute('data-id'));
+      } else {
+        alert('Cart not loaded');
+      }
+    });
+  }
 })();
 </script>
 
