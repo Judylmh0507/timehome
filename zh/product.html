@@ -94,7 +94,14 @@ body { padding-left: 180px; }
   var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
   if (!p) { box.innerHTML = '<p>未找到该产品。</p>'; return; }
 
-  document.title = p.name + ' — TIMEHOME 清仓';
+  document.title = (p.seoTitle || p.name) + ' — TIMEHOME 清仓';
+  var metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.name = 'description';
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.content = p.seoDesc || '';
 
   var imgs = p.images.map(function (f, i) {
     return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
