@@ -1,16 +1,18 @@
 function imgPath(file) {
   if (!file) return '';
   var isSub = location.pathname.indexOf('/en/') !== -1
-           || location.pathname.indexOf('/zh/') !== -1
-           || location.pathname.indexOf('/ru/') !== -1;
+         || location.pathname.indexOf('/zh/') !== -1
+         || location.pathname.indexOf('/ru/') !== -1
+         || location.pathname.indexOf('/es/') !== -1;
   return (isSub ? '../img/' : 'img/') + file.toLowerCase();
 }
 
 function detailUrl(id) {
   var isZh = location.pathname.indexOf('/zh/') !== -1;
+  var isEs = location.pathname.indexOf('/es/') !== -1;
   var isEn = location.pathname.indexOf('/en/') !== -1;
   var isRu = location.pathname.indexOf('/ru/') !== -1;
-  var prefix = (isZh || isEn || isRu) ? 'product.html' : 'en/product.html';
+  var prefix = (isZh || isEn || isRu || isEs) ? 'product.html' : 'en/product.html';
   return prefix + '?id=' + id;
 }
 
