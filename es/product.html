@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — TIMEHOME Clearance</title>
+<link rel="stylesheet" href="../css/style.css">
+<style id="knocket-force-show">#knocket-container, .knocket-container, [id*="knocket"], [class*="knocket"] { opacity: 1 !important; visibility: visible !important; transform: none !important; transition: none !important; }</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yt9ea9nxf1");
+</script>
+<style>
+
+</style>
+<style>
+
+.lang-opts { display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #fff; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 140px; z-index: 9999; }
+
+.lang-opts a { display: block; padding: 10px 16px; color: #2a2a28; text-decoration: none; font-size: 14px; }
+.lang-opts a:hover { background: #f8f5ef; color: #c9a96e; }
+</style>
+<style id="sidebar-css">
+.sidebar {
+  position: fixed; left: 0; top: 60px; width: 180px; height: calc(100vh - 60px);
+  background: #f8f5ef; border-right: 1px solid #e8e2d5;
+  padding: 20px 0; overflow-y: auto; z-index: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.sidebar a {
+  display: block; padding: 12px 20px; color: #2a2a28;
+  text-decoration: none; font-size: 14px; border-left: 3px solid transparent;
+  transition: all 0.15s;
+}
+.sidebar a:hover { background: #fff; border-left-color: #c9a96e; color: #c9a96e; }
+.sidebar .sb-divider { height: 1px; background: #e8e2d5; margin: 12px 20px; }
+body { padding-left: 180px; }
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  body { padding-left: 0; }
+}
+</style>
+<style>.lang-flat{margin-left:16px;}.lang-flat a{color:#ccc;text-decoration:none;font-size:13px;padding:4px 8px;margin-left:4px;}.lang-flat a:hover{color:#fff;}</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a href="/en/index.html">🏠 Home</a>
+  <a href="/en/category.html?cat=living">🛋️ Living Room</a>
+  <a href="/en/category.html?cat=dining">🍽️ Dining Room</a>
+  <a href="/en/category.html?cat=study">📚 Study / Office</a>
+  <a href="/en/category.html?cat=bedroom">🛏️ Bedroom</a>
+  <div class="sb-divider"></div>
+  <a href="/about.html">ℹ️ About Us</a>
+  <a href="/wholesale.html">📦 Wholesale</a>
+  <a href="/cart.html">🛒 Cart</a>
+</aside>
+
+<header class="header">
+  <div class="container">
+    <div class="logo"><a href="index.html">TIMEHOME Clearance</a></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="category.html?cat=living">Living</a>
+      <a href="category.html?cat=dining">Dining</a>
+      <a href="category.html?cat=study">Study</a>
+      <a href="category.html?cat=bedroom">Bedroom</a>
+      <a href="../../about.html">About</a>
+      <a href="../../wholesale.html">Wholesale</a>
+      <a href="../cart.html">Cart (<span id="cart-badge">0</span>)</a>
+
+      <span class="lang-flat"><a href="/en/product.html">English</a><a href="/zh/product.html">中文</a><a href="/ru/product.html">Русский</a></span>
+      </nav>
+  </div>
+</header>
+
+<section class="container" style="padding:40px 0;">
+  <div id="product-detail"></div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div><b>TIMEHOME Clearance</b> &mdash; Guangzhou Panyu Time Home Furniture Firm</div>
+    <div style="margin-top:8px;font-size:14px;color:#888;">Email: sales@timehome.top | WeChat/Phone: +86 18602074495 | Foshan Shunde</div>
+  </div>
+</footer>
+
+<script src="../js/products.js?v=2"></script>
+<script src="../js/cart.js"></script>
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get('id');
+  var box = document.getElementById('product-detail');
+  if (!id) { box.innerHTML = '<p>Missing product ID.</p>'; return; }
+
+  var p = window.PRODUCTS.filter(function (x) { return x.id === id; })[0];
+  if (!p) { box.innerHTML = '<p>Product not found.</p>'; return; }
+
+  document.title = (p.seoTitle || p.name) + ' — TIMEHOME Clearance';
+  var metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.name = 'description';
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.content = p.seoDesc || '';
+
+  var imgs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
+         + 'class="detail-img" data-idx="' + i + '" '
+         + 'style="width:100%;border-radius:8px;border:1px solid #ece5d8;' + (i===0?'':'display:none;') + '">';
+  }).join('');
+
+  var thumbs = p.images.map(function (f, i) {
+    return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
+         + 'class="thumb" '
+         + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
+  }).join('');
+
+  var saveBadge = '';
+  if (p.originalPrice && p.originalPrice > p.price) {
+    var pct = Math.round((1 - p.price / p.originalPrice) * 100);
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Save ' + pct + '%</span>';
+  }
+
+  var outOfStock = (p.stock <= 0);
+  var addBtn = outOfStock
+    ? '<button disabled style="background:#ccc;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;cursor:not-allowed;">Out of Stock</button>'
+    : '<button onclick="addToCart(\'' + p.id + '\')" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Add to Cart</button>';
+
+  box.innerHTML = ''
+    + '<div class="product-detail">'
+    +   '<div class="main-img">'
+    +     '<div id="main-img-box">' + imgs + '</div>'
+    +     '<div class="thumbs" id="thumbs">' + thumbs + '</div>'
+    +   '</div>'
+    +   '<div>'
+    +     '<h1 style="margin-top:0;">' + p.name + '</h1>'
+    +     '<p style="color:#888;">SKU: ' + p.id.toUpperCase() + '</p>'
+    +     saveBadge
+    +     '<div style="margin:20px 0;font-size:24px;">'
+    +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
+    +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
+    +     '</div>'
+    +     '<div style="margin:20px 0;">' + addBtn + '</div>'
+    +     '<ul class="specs">'
+    +       '<li><b>Dimensions:</b> ' + p.dimensions + '</li>'
+    +       '<li><b>Material:</b> ' + p.material + '</li>'
+    +       '<li><b>Finish:</b> ' + p.finish + '</li>'
+    +       '<li><b>Weight:</b> ' + p.weight + '</li>'
+      + '<li><b>Gross Weight:</b> ' + p.grossWeight + '</li>'
+    +       '<li><b>Packaging:</b> ' + p.packagingVolume + '</li>'
+    +       '<li><b>Stock:</b> ' + p.stock + ' pcs</li>'
+    +     '</ul>'
+    +     '<div class="condition-note">' + p.condition + '</div>'
+    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← Back to list</a>'
+    +   '</div>'
+    + '</div>';
+
+  var mainImgs = box.querySelectorAll('.detail-img');
+  var thumbEls = box.querySelectorAll('.thumb');
+  thumbEls.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var idx = parseInt(t.getAttribute('data-idx'), 10);
+      mainImgs.forEach(function (m, i) { m.style.display = (i === idx ? 'block' : 'none'); });
+      thumbEls.forEach(function (x) { x.style.borderColor = '#ddd'; });
+      t.style.borderColor = '#c9a96e';
+    });
+  });
+})();
+</script>
+
+<style id="wechat-widget-style">
+.wechat-widget {
+  position: fixed;
+  right: 88px;
+  bottom: 20px;
+  z-index: 9998;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.wechat-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #07c160;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wechat-toggle:hover { background: #06ad56; }
+.wechat-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 240px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  padding: 20px;
+  text-align: center;
+}
+.wechat-panel.open { display: block; }
+.wechat-panel h4 { margin: 0 0 12px; font-size: 15px; color: #2a2a28; }
+.wechat-panel img { width: 100%; max-width: 200px; border-radius: 6px; }
+.wechat-panel p { font-size: 13px; color: #666; margin: 10px 0 0; }
+.wechat-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}
+ (max-width: 768px) {
+  .wechat-widget { right: 82px; bottom: 16px; }
+  .wechat-toggle { width: 48px; height: 48px; }
+}
+</style>
+
+<!-- 微信浮窗 -->
+<div class="wechat-widget" id="wechat-widget">
+  <div class="wechat-panel" id="wechat-panel">
+    <button class="wechat-close" onclick="toggleWechat()">×</button>
+    <h4 id="wechat-title">联系微信</h4>
+    <img src="/img/wechat-qr.png" alt="WeChat QR">
+    <p id="wechat-desc">微信：18602074495</p>
+  </div>
+  <button class="wechat-toggle" onclick="toggleWechat()">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8.5 4C4.9 4 2 6.5 2 9.5c0 1.7.9 3.2 2.3 4.2l-.6 2.1 2.4-1.2c.7.2 1.5.4 2.4.4h.5c-.1-.4-.2-.8-.2-1.2 0-3.3 3.1-5.9 7-5.9h.4C15.7 5.6 12.5 4 8.5 4zm-2.3 3.7c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zm4.6 0c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9zM22 13.9c0-2.5-2.4-4.5-5.4-4.5s-5.4 2-5.4 4.5 2.4 4.5 5.4 4.5c.6 0 1.2-.1 1.8-.3l1.9 1-.5-1.7c1.4-.8 2.2-2.1 2.2-3.5zm-7.2-1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7zm3.6 0c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7z"/></svg>
+  </button>
+</div>
+
+<script>
+function toggleWechat() {
+  document.getElementById("wechat-panel").classList.toggle("open");
+}
+</script>
+
+<script src="https://trtc.io/knocket-sdk/sdk.js?identifier=e6c8d53ab576c527a2&v=1790482695187" async></script>
+
+<script>
+(function() {
+  var pid = new URLSearchParams(location.search).get('id');
+  if (!pid) return;
+  document.querySelectorAll('.lang-flat a').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && href.indexOf('product.html') !== -1 && href.indexOf('id=') === -1) {
+      a.setAttribute('href', href + '?id=' + pid);
+    }
+  });
+})();
+</script>
+</body>
+</html>
