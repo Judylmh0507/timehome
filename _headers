@@ -1,0 +1,15 @@
+/*
+  Cache-Control: max-age=0, must-revalidate
+
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.svg
+*.css
+*.js
+*.woff
+*.woff2
+*.ttf
+  Cache-Control: public, max-age=604800, immutable
