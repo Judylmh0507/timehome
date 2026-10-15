@@ -2,5 +2,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# 禁止抓取函数、临时库存json（不需要被收录）
+Disallow: /functions/
+Disallow: /kv-bulk.json
+Disallow: /kv-stock.json
+
+# 多语言站点sitemap
 Sitemap: https://timehome.top/sitemap.xml
