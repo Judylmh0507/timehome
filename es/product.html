@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,15 +47,15 @@ body { padding-left: 180px; }
 </head>
 <body>
 <aside class="sidebar">
-  <a href="/en/index.html">🏠 Inicio</a>
-  <a href="/en/category.html?cat=living">🛋️ Salón</a>
-  <a href="/en/category.html?cat=dining">🍽️ Comedor</a>
-  <a href="/en/category.html?cat=study">📚 Despacho / Oficina</a>
-  <a href="/en/category.html?cat=bedroom">🛏️ Dormitorio</a>
+  <a href="/es/index.html">🏠 Inicio</a>
+  <a href="/es/category.html?cat=living">🛋️ Salón</a>
+  <a href="/es/category.html?cat=dining">🍽️ Comedor</a>
+  <a href="/es/category.html?cat=study">📚 Despacho / Oficina</a>
+  <a href="/es/category.html?cat=bedroom">🛏️ Dormitorio</a>
   <div class="sb-divider"></div>
-  <a href="/about.html">ℹ️ Sobre nosotros</a>
-  <a href="/wholesale.html">📦 Venta al por mayor</a>
-  <a href="/cart.html">🛒 Carrito</a>
+  <a href="/es/about.html">ℹ️ Sobre nosotros</a>
+  <a href="/es/wholesale.html">📦 Venta al por mayor</a>
+  <a href="/es/cart.html">🛒 Carrito</a>
 </aside>
 
 <header class="header">
@@ -122,7 +122,7 @@ body { padding-left: 180px; }
   var saveBadge = '';
   if (p.originalPrice && p.originalPrice > p.price) {
     var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Save ' + pct + '%</span>';
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Ahorra ' + pct + '%</span>';
   }
 
   var outOfStock = (p.stock <= 0);
@@ -155,7 +155,7 @@ body { padding-left: 180px; }
     +       '<li><b>Existencias:</b> ' + p.stock + ' uds.</li>'
     +     '</ul>'
     +     '<div class="condition-note">' + p.condition + '</div>'
-    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← Back to list</a>'
+    +     '<a href="category.html?cat=' + p.cat + '" style="display:inline-block;margin-top:20px;color:#333;">← Volver a la lista</a>'
     +   '</div>'
     + '</div>';
 
