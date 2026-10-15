@@ -4,4 +4,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://timehome.top/sitemap.xml
-Sitemap: https://timehome.top/es-sitemap.xml
