@@ -114,8 +114,8 @@ body { padding-left: 180px; }
   }).join('');
 
   var thumbs = p.images.map(function (f, i) {
-    return '<img src="/cdn-cgi/image/width=120,quality=80/../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
-         + 'class="thumb" loading="lazy" '
+    return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
+         + 'class="thumb" loading="lazy" loading="lazy" '
          + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
   }).join('');
 
