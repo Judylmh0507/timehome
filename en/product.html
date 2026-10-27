@@ -108,14 +108,14 @@ body { padding-left: 180px; }
   metaDesc.content = p.seoDesc || '';
 
   var imgs = p.images.map(function (f, i) {
-    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" '
-         + 'class="detail-img" data-idx="' + i + '" '
+    return '<img src="../img/' + f.toLowerCase() + '" alt="' + p.name + '" loading="lazy" '
+         + 'class="detail-img" loading="lazy" data-idx="' + i + '" '
          + 'style="width:100%;border-radius:8px;border:1px solid #ece5d8;' + (i===0?'':'display:none;') + '">';
   }).join('');
 
   var thumbs = p.images.map(function (f, i) {
     return '<img src="../img/' + f.toLowerCase() + '" data-idx="' + i + '" '
-         + 'class="thumb" '
+         + 'class="thumb" loading="lazy" '
          + 'style="width:60px;height:60px;object-fit:cover;border-radius:4px;border:2px solid ' + (i===0?'#c9a96e':'#ddd') + ';cursor:pointer;">';
   }).join('');
 
