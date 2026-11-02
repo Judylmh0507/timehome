@@ -115,7 +115,7 @@ body { padding-left: 180px; }
   var saveBadge = '';
   if (p.originalPrice && p.originalPrice > p.price) {
     var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Скидка ' + pct + '%</span>';
+    saveBadge = '<span style="background:#222222;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Скидка ' + pct + '%</span>';
   }
 
   box.innerHTML = ''
@@ -129,7 +129,7 @@ body { padding-left: 180px; }
     +     '<p style="color:#888;">SKU: ' + p.id.toUpperCase() + '</p>'
     +     saveBadge
     +     '<div style="margin:20px 0;font-size:24px;">'
-    +       '<b style="color:#d32f2f;">$' + p.price + '</b>'
+    +       '<b style="color:#222222;">$' + p.price + '</b>'
     +       (p.originalPrice ? ' <s style="color:#999;margin-left:10px;">$' + p.originalPrice + '</s>' : '')
     +     '</div>'
     +     '<div style="margin:20px 0;"><button class="btn-add-cart" data-id="' + p.id + '" style="background:#c9a96e;color:#fff;padding:14px 32px;border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;">Добавить в корзину</button></div>'

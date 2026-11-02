@@ -170,7 +170,7 @@ function renderCartPage() {
           + '<td style="padding:12px 0;font-weight:600;">$' + lineTotal + '</td>'
           + '<td style="padding:12px 0;text-align:right;">'
           +   '<a href="#" onclick="event.preventDefault(); removeFromCart(\'' + id + '\'); renderCartPage();" '
-          +   'style="color:#d32f2f;font-size:13px;">Remove</a>'
+          +   'style="color:#222222;font-size:13px;">Remove</a>'
           + '</td>'
           + '</tr>';
   });
