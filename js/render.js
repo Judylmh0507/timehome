@@ -43,7 +43,7 @@ function renderProducts(containerId, cat, onlyFeatured, limit) {
     var saveBadge = '';
     if (p.originalPrice && p.originalPrice > p.price) {
       var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-      saveBadge = '<span class="badge-save">Final Clearance</span>';
+      saveBadge = '<span class="badge-save" style="background:#c9a96e !important; color:#ffffff !important; font-weight:bold !important; padding:4px 10px !important; border-radius:4px !important; border:none !important; box-shadow:none !important; text-shadow:none !important; font-size:12px !important;">Final Clearance</span>';
     }
     var outOfStock = (p.stock <= 0);
     html += ''
