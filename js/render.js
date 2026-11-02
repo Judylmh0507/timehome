@@ -43,7 +43,7 @@ function renderProducts(containerId, cat, onlyFeatured, limit) {
     var saveBadge = '';
     if (p.originalPrice && p.originalPrice > p.price) {
       var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-      saveBadge = '<span class="badge-save">Save ' + pct + '%</span>';
+      saveBadge = '<span class="badge-save">Final Clearance</span>';
     }
     var outOfStock = (p.stock <= 0);
     html += ''

@@ -122,7 +122,7 @@ body { padding-left: 180px; }
   var saveBadge = '';
   if (p.originalPrice && p.originalPrice > p.price) {
     var pct = Math.round((1 - p.price / p.originalPrice) * 100);
-    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Save ' + pct + '%</span>';
+    saveBadge = '<span style="background:#d32f2f;color:#fff;padding:4px 10px;border-radius:4px;font-size:13px;">Final Clearance</span>';
   }
 
   var outOfStock = (p.stock <= 0);
