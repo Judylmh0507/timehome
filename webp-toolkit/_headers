@@ -1,0 +1,23 @@
+# 静态资源长缓存（30天），图片/样式/脚本/字体不重复回源
+/*.jpg
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=2592000, immutable
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+/*.webp
+  Cache-Control: public, max-age=2592000, immutable
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable
+/*.css
+  Cache-Control: public, max-age=2592000, immutable
+/*.js
+  Cache-Control: public, max-age=2592000, immutable
+/*.woff2
+  Cache-Control: public, max-age=2592000, immutable
+/*.woff
+  Cache-Control: public, max-age=2592000, immutable
+
+# HTML 页面不长期缓存，保证改完立刻生效
+/*.html
+  Cache-Control: no-cache
